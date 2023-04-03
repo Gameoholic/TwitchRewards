@@ -1,0 +1,60 @@
+############################################################
+# +------------------------------------------------------+ #
+# |               Notes & Configurations                 | #
+# +------------------------------------------------------+ #
+############################################################
+
+Redeems:
+  - Give me a random item:
+      - Reward: GiveItem
+      - Item: RANDOM
+  - Give Random potion effect:
+      - Reward: PotionEffect
+      - Effect: RANDOM
+      - Duration: RANDOM
+      - Amplifier: RANDOM
+  - Drop item in hand:
+      - Reward: DropItem
+  - Spawn a creeper:
+      - Reward: SpawnEntity
+      - Entity: CREEPER
+      - Count: 1
+  - Lock an inventory slot:
+      - Reward: LockInventorySlot
+      - Time: 30
+  - Launch me:
+      - Reward: Launch
+      - Velocity: 3
+  - No Placing blocks:
+      - Reward: NoPlacing
+      - NoPlacingDuration: 30
+  - Make Me Clutch:
+      - Reward: ClutchChallenge
+      - ClutchItem: RANDOM
+      - Height: RANDOM
+  - No breaking blocks:
+      - Reward: NoBreaking
+      - NoBreakingDuration: 30
+  - Spawn 25 Zombies:
+      - Reward: SpawnEntity
+      - Entity: ZOMBIE
+      - Count: 25
+  - Drop everything in my inventory:
+      - Reward: DropInventory
+  - Spawn Warden:
+      - Reward: SpawnEntity
+      - Entity: WARDEN
+      - Count: 1
+  - /Whitelist add ___:
+      - Reward: AddToWhitelist
+      - WhitelistDuration: 10
+  - Spawn 10 Wardens:
+      - Reward: SpawnEntity
+      - Entity: WARDEN
+      - Count: 10
+  - God Mode:
+      - Reward: GodMode
+      - GodModeDuration: 15
+  - Flight:
+      - Reward: Flight
+      - FlightDuration: 10

@@ -1,0 +1,32 @@
+name: TwitchRewardsPlugin
+version: '${project.version}'
+main: com.github.gameoholic.twitchrewardsplugin.TwitchRewardsPlugin
+api-version: 1.19
+authors: [ Gameoholic ]
+description: Twitch Rewards
+
+commands:
+  testredeem:
+    description: Test a redeem
+    usage: /test2
+  setstreamer:
+    description: Starts
+    usage: /test2
+  setredeemplayer:
+    description: Starts
+    usage: /test2
+  setclientid:
+    description: Starts
+    usage: /test2
+  setaccesstoken:
+    description: Starts
+    usage: /test2
+  startredeems:
+    description: Starts
+    usage: /test2
+  pauseredeems:
+    description: Starts
+    usage: /test2
+  redeemsstatus:
+    description: Starts
+    usage: /test2
