@@ -1,4 +1,5 @@
-If player's offline Whitelist reward fails.
+BUG: If player is offline Whitelist reward fails.
+Multiple streamers on the same server.
 Configurable redeem messages.
 Configurable redeem sounds.
 Allow customizable random values, for example: "1-5".
