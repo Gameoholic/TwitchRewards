@@ -19,9 +19,10 @@ A 1.19 plugin designed for streamers who want to engage their audience. Allows y
 1. Create redeems on your Twitch channel. Their titles and descriptions can be whatever you want.
 2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your redeems!
 3. Run /startredeems and follow the instructions.
+Test redeems with /testredeem <Redeem name>
 
 **Important**
 ---
 Using /reload and /pauseredeems isn't fully supported, and you might run into issues. To reload the config, please restart the server instead.
 
-If you find any bugs, have any suggestions or have ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
+If you find any bugs, have any suggestions or ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
