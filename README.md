@@ -2,11 +2,7 @@
 
 **Twitch Rewards**
 ---
-A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game in an easy and configurable way.
-
-```
-asd
-```
+A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
 **Features**
 ---
