@@ -4,54 +4,53 @@
 # +------------------------------------------------------+ #
 ############################################################
 
+#------------ MANAGING REDEEMS ------------
+
+#Consult the full documentation (LINK_HERE) on how to manage and customize your redeems. Otherwise, you may use
+#one of the redeem templates located in the RedeemTemplates folder.
+
+#The first line of each redeem is the redeem's title, and must match the redeem you have on your Twitch channel.
+#The current Redeems configuration is below, and you may use it or edit it however you want.
+
+#Don't forget to restart the server after making changes to this file!
+
 Redeems:
-  - Give me a random item:
-      - Reward: GiveItem
-      - Item: RANDOM
-  - Give Random potion effect:
+  - Give me a random item: #Redeem's title, must match the one you have on Twitch
+      - Reward: GiveItem   #Reward type, this must be one of the values listed in the documentation
+      - Item: RANDOM       #For GiveItem, you can either set this to RANDOM or to one of the values listed here:
+                           #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html (for example, DIAMOND_SWORD)
+  - Give me a random effect:
       - Reward: PotionEffect
       - Effect: RANDOM
       - Duration: RANDOM
       - Amplifier: RANDOM
-  - Drop item in hand:
-      - Reward: DropItem
   - Spawn a creeper:
       - Reward: SpawnEntity
       - Entity: CREEPER
       - Count: 1
+  - Launch:
+      - Reward: Launch
+      - Velocity: 3
+  - Drop item in hand:
+      - Reward: DropItem
   - Lock an inventory slot:
       - Reward: LockInventorySlot
       - Time: 30
-  - Launch me:
-      - Reward: Launch
-      - Velocity: 3
   - No Placing blocks:
       - Reward: NoPlacing
       - NoPlacingDuration: 30
-  - Make Me Clutch:
-      - Reward: ClutchChallenge
-      - ClutchItem: RANDOM
-      - Height: RANDOM
   - No breaking blocks:
       - Reward: NoBreaking
       - NoBreakingDuration: 30
-  - Spawn 25 Zombies:
-      - Reward: SpawnEntity
-      - Entity: ZOMBIE
-      - Count: 25
+  - No crafting:
+      - Reward: NoCrafting
+      - NoCraftingDuration: RANDOM
+  - Make Me Clutch:
+      - Reward: ClutchChallenge
+      - ClutchItem: RANDOM
+      - Height: 100
   - Drop everything in my inventory:
       - Reward: DropInventory
-  - Spawn Warden:
-      - Reward: SpawnEntity
-      - Entity: WARDEN
-      - Count: 1
-  - /Whitelist add ___:
-      - Reward: AddToWhitelist
-      - WhitelistDuration: 10
-  - Spawn 10 Wardens:
-      - Reward: SpawnEntity
-      - Entity: WARDEN
-      - Count: 10
   - God Mode:
       - Reward: GodMode
       - GodModeDuration: 15
