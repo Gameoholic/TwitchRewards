@@ -20,3 +20,6 @@ asd
 
 **Setting up**
 ---
+1. Create redeems on your Twitch channel. Their titles and descriptions can be whatever you want.
+2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your rewards!
+3. Run /startredeems and follow the instructions.
