@@ -4,6 +4,7 @@ package com.github.gameoholic.twitchrewardsplugin.Commands;
 import com.github.gameoholic.twitchrewardsplugin.Rewards.RewardManager;
 import com.github.gameoholic.twitchrewardsplugin.TwitchRewardsPlugin;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,8 +21,19 @@ public class TestRedeemCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player player) {
+            if (!player.hasPermission("twitchrewards.testredeems")) {
+                player.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                return true;
+            }
+        }
+
+        String redeemName = "";
+        for (String arg: args) {
+            redeemName += arg;
+        }
         if (plugin.getTwitchManager().getTwitchClient() != null)
-            plugin.getRewardManager().activateChannelPointReward(sender.getName(), args[0].toString(), 20, "");
+            plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
         return true;
     }
 

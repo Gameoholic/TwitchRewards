@@ -3,7 +3,7 @@ package com.github.gameoholic.twitchrewardsplugin.Rewards.RewardsActivators;
 import com.github.gameoholic.twitchrewardsplugin.TwitchRewardsPlugin;
 import com.github.gameoholic.twitchrewardsplugin.tasks.NoPlacingTask;
 import com.github.gameoholic.twitchrewardsplugin.tasks.WhitelistTask;
-import jdk.jfr.internal.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;

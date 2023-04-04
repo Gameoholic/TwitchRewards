@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
@@ -18,11 +19,22 @@ public class StartRedeemsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player player) {
+            if (!player.hasPermission("twitchrewards.startredeems")) {
+                player.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                return true;
+            }
+        }
+
         List<String> redeemPlayers = plugin.getConfig().getStringList("RedeemPlayers");
         String accessToken = plugin.getConfig().getString("AccessToken");
         String clientId = plugin.getConfig().getString("ClientID");
         String streamerUsername = plugin.getConfig().getString("StreamerUsername");
 
+        if (plugin.getTwitchManager().getTwitchClient() != null) {
+            sender.sendMessage(ChatColor.RED + "Twitch Client is already running!");
+            return true;
+        }
         boolean invalidRequest = false;
         if (redeemPlayers.isEmpty()) {
             sender.sendMessage(ChatColor.RED + "Redeem player not set. Use /setredeemplayer <player/s>");

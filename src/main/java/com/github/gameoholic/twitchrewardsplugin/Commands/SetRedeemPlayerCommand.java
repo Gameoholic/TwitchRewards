@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,13 @@ public class SetRedeemPlayerCommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player player) {
+            if (!player.hasPermission("twitchrewards.setredeemplayer")) {
+                player.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+                return true;
+            }
+        }
+
         String playersString = "";
         List<String> playerUsernames = new ArrayList<>();
         for (String username: args) {

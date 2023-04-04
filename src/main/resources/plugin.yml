@@ -7,26 +7,26 @@ description: Twitch Rewards
 
 commands:
   testredeem:
-    description: Test a redeem
-    usage: /test2
+    description: Test a redeem (for debugging purposes)
+    usage: /testredeem <redeem name>
   setstreamer:
-    description: Starts
-    usage: /test2
+    description: Sets the streamer
+    usage: /setstreamer <streamer username>
   setredeemplayer:
-    description: Starts
-    usage: /test2
+    description: Sets the player/s to be affected by redeems, separate players with spaces
+    usage: /setredeemplayer <player username/s>
   setclientid:
-    description: Starts
-    usage: /test2
+    description: Sets the client ID
+    usage: /setclientid <client ID>
   setaccesstoken:
-    description: Starts
-    usage: /test2
+    description: Sets the access token
+    usage: /setaccesstoken <access token>
   startredeems:
-    description: Starts
-    usage: /test2
+    description: Opens Twitch Client and starts listening to redeems
+    usage: /startredeems
   pauseredeems:
-    description: Starts
-    usage: /test2
+    description: Pauses redeems
+    usage: /pauseredeems
   redeemsstatus:
-    description: Starts
-    usage: /test2
+    description: Prints status of the Twitch Client
+    usage: /redeemstatus

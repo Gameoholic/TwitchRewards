@@ -33,11 +33,7 @@ public class TwitchManager {
     //gp762nuuoqcoxypju8c569th9wz7q5 - client id
     //5fnlxikru15qm1alh8mjeq4o4ycgcq - access token
     public void startClient(CommandSender commandSender) {
-        if ("twitch client" == "closed") {
-            commandSender.sendMessage(ChatColor.YELLOW + "Twitch Client is already running! Stop with /pauseredeems");
-            return;
-        }
-        commandSender.sendMessage(ChatColor.YELLOW + "Starting Twitch client, please wait...");
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] Starting Twitch client, please wait...");
 
         plugin.setPlayerUsernames(plugin.getConfig().getStringList("RedeemPlayers"));
         accessToken = plugin.getConfig().getString("AccessToken");
@@ -60,13 +56,14 @@ public class TwitchManager {
             listenToRedeems();
         }
         catch (Exception e) {
-            commandSender.sendMessage(ChatColor.RED + "Couldn't start Twitch Client. Error code: " + ChatColor.AQUA
-                + e.getMessage());
+            Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards]" +
+                    ChatColor.RED + "Couldn't start Twitch Client. Error code: " + ChatColor.AQUA + e.getMessage());
             stopClient();
             return;
         }
 
-        commandSender.sendMessage(ChatColor.GREEN + "Successfully started Twitch Client. Listening for redeems on " +
+        Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards]" +
+                ChatColor.GREEN + "Successfully started Twitch Client. Listening for redeems on " +
                 ChatColor.YELLOW + streamerUsername + ChatColor.AQUA + " (" + streamerID + "). " + ChatColor.YELLOW +
                 "Affecting player/s " + plugin.getPlayerUsernames().toString() + ".");
 
