@@ -15,6 +15,7 @@ asd
 + 14 configurable reward types
 + Affect multiple players at the same time
     - You may select multiple players to be affected by redeems, or only yourself!
+
 *And with more to come..*
 
 **Setting up**
