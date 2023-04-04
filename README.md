@@ -27,4 +27,5 @@ asd
 **Important**
 ---
 Using /reload and /pauseredeems isn't fully supported, and you might run into issues. To reload the config, please restart the server instead.
-If you find any bug reports, have any suggestions or have ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
+
+If you find any bugs, have any suggestions or have ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
