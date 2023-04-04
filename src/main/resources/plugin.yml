@@ -1,6 +1,6 @@
-name: TwitchRewardsPlugin
+name: TwitchRewards
 version: '${project.version}'
-main: com.github.gameoholic.twitchrewardsplugin.TwitchRewardsPlugin
+main: com.github.gameoholic.twitchrewards.TwitchRewards
 api-version: 1.19
 authors: [ Gameoholic ]
 description: Twitch Rewards

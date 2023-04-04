@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.gameoholic</groupId>
-    <artifactId>TwitchRewardsPlugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>TwitchRewards</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>TwitchRewardsPlugin</name>
+    <name>TwitchRewards</name>
 
-    <description>Twitch Rewards</description>
+    <description>Minecraft Plugin for connecting custom twitch redeems to Minecraft</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
