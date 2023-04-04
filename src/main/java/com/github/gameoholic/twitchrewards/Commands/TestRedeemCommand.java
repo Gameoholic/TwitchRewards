@@ -2,6 +2,7 @@ package com.github.gameoholic.twitchrewards.Commands;
 
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,8 +28,10 @@ public class TestRedeemCommand implements CommandExecutor {
 
         String redeemName = "";
         for (String arg: args) {
-            redeemName += arg;
+            redeemName += arg + " ";
         }
+        if (redeemName.length() > 0)
+            redeemName = redeemName.substring(0, redeemName.length() - 1);
         if (plugin.getTwitchManager().getTwitchClient() != null)
             plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
         return true;

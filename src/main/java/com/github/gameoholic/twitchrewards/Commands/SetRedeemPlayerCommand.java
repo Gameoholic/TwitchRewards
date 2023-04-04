@@ -31,7 +31,7 @@ public class SetRedeemPlayerCommand implements CommandExecutor {
             playerUsernames.add(username);
         }
         if (playersString.equals("")) {
-            sender.sendMessage(ChatColor.RED + "Invalid player username/s. ");
+            sender.sendMessage(ChatColor.RED + "Invalid player username/s. Separate usernames using spaces.");
             return true;
         }
         plugin.getConfig().set("RedeemPlayers", playerUsernames);

@@ -22,7 +22,7 @@ public class SetStreamerCommand implements CommandExecutor {
             }
         }
 
-        if (args[0] == null || args[0].equals("")) {
+        if (args.length == 0 || args[0].equals("")) {
             sender.sendMessage(ChatColor.RED + "Invalid Streamer username. ");
             return true;
         }

@@ -35,7 +35,7 @@ public class StartRedeemsCommand implements CommandExecutor {
         }
         boolean invalidRequest = false;
         if (redeemPlayers.isEmpty()) {
-            sender.sendMessage(ChatColor.RED + "Redeem player not set. Use /setredeemplayer <player/s>");
+            sender.sendMessage(ChatColor.RED + "Redeem player not set. Use /setredeemplayer <player username/s>");
             invalidRequest = true;
         }
         if (accessToken == null) {
@@ -51,8 +51,20 @@ public class StartRedeemsCommand implements CommandExecutor {
             invalidRequest = true;
         }
 
-        if (invalidRequest)
+        if (invalidRequest) {
+            sender.sendMessage(ChatColor.YELLOW + "It looks like this is your first time using the plugin. \n" +
+                    "Please follow the following instructions to set up the plugin:\n" +
+                    "1. Go to https://twitchtokengenerator.com/\n2. Select 'Custom Scope Token'.\n3. Scroll down and " +
+                    "enable channel:read:redemptions.\n4. Click 'Generate Token' and select 'Authorize'. \n5. " +
+                    "Copy the ACCESS TOKEN and CLIENT ID, and set them using /setaccesstoken <access token> and " +
+                    "/setclientid <client ID>.\n6. Provide the streamer username using /setstreamer <streamer username>, " +
+                    "and select the player/s whom you want redeems to affect using " +
+                    "/setredeemplayer <player username/s (separated with spaces)>. \n7. Run /startredeems\n\n" +
+                    "Don't forget to create redeems on your Twitch channel and edit the config file to match them.");
             return true;
+        }
+
+
 
         plugin.getTwitchManager().startClient(sender);
         return true;
