@@ -1,0 +1,7 @@
+If player's offline Whitelist reward fails.
+Configurable redeem messages.
+Configurable redeem sounds.
+Allow customizable random values, for example: "1-5".
+Better config error messages.
+Full support for reloading.
+Add docs.
