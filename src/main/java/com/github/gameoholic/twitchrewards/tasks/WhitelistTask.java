@@ -18,12 +18,12 @@ public class WhitelistTask extends BukkitRunnable {
 
     private int timeLeft;
     private String playerUsername;
-    private Player affectedPlayer; //Player who's affected by redeems
+    private List<String> affectedPlayers;
     private boolean joined = false;
-    public WhitelistTask(TwitchRewards plugin, String playerUsername, Player affectedPlayer, int time) {
+    public WhitelistTask(TwitchRewards plugin, String playerUsername, List<String> affectedPlayers, int time) {
         timeLeft = time + 1;
         this.playerUsername = playerUsername;
-        this.affectedPlayer = affectedPlayer;
+        this.affectedPlayers = affectedPlayers;
         runTaskTimer(plugin, 0L, 20L);
         whitelistTasks.add(this);
     }
@@ -65,7 +65,7 @@ public class WhitelistTask extends BukkitRunnable {
     public void setJoined(boolean joined) {
         this.joined = joined;
     }
-    public Player getAffectedPlayer() {
-        return affectedPlayer;
+    public List<String> getAffectedPlayers() {
+        return affectedPlayers;
     }
 }

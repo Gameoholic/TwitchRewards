@@ -46,7 +46,7 @@ public class RewardManager {
         for (String playerUsername : plugin.getPlayerUsernames()) {
             Player player = Bukkit.getPlayer(playerUsername);
 
-            player.playSound(player.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
+            player.playSound(player.getLocation(), plugin.getSound(), 1.0f, 1.0f);
 
             if (player == null)
                 continue;
@@ -225,7 +225,7 @@ public class RewardManager {
                 else
                     whitelistDuration = (int) redeemData.get("WhitelistDuration");
                 Whitelist.addToWhitelist(plugin, input.substring(0, Math.min(input.length(), 15)),
-                        Bukkit.getPlayer(plugin.getPlayerUsernames().get(0)), whitelistDuration);
+                        plugin.getPlayerUsernames(), whitelistDuration);
                 break;
         }
 

@@ -14,6 +14,9 @@
 
 #Don't forget to restart the server after making changes to this file!
 
+#Sound that plays when a redeem is used
+Sound: BLOCK_GLASS_BREAK #Sounds here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+
 Redeems:
   - Give me a random item: #Redeem's title, must match the one you have on Twitch
       - Reward: GiveItem   #Reward type, this must be one of the values listed in the documentation

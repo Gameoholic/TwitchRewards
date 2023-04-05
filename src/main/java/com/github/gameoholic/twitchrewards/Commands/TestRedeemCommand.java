@@ -9,6 +9,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestRedeemCommand implements CommandExecutor {
 
 
@@ -32,7 +35,20 @@ public class TestRedeemCommand implements CommandExecutor {
         }
         if (redeemName.length() > 0)
             redeemName = redeemName.substring(0, redeemName.length() - 1);
-        if (plugin.getTwitchManager().getTwitchClient() != null)
+
+        //If Twitch client wasn't set up yet, allow temporary usage of command on command sender
+        if (plugin.getTwitchManager().getTwitchClient() == null) {
+            if (sender instanceof Player player) {
+                List<String> tempPlayerUsernames = new ArrayList<>();
+                List<String> playerUsernames = plugin.getPlayerUsernames();
+                tempPlayerUsernames.add(player.getName());
+
+                plugin.setPlayerUsernames(tempPlayerUsernames);
+                plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
+                plugin.setPlayerUsernames(playerUsernames);
+            }
+        }
+        else
             plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
         return true;
     }

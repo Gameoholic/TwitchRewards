@@ -3,6 +3,7 @@ package com.github.gameoholic.twitchrewards;
 import com.github.gameoholic.twitchrewards.Rewards.RewardType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 
 import java.util.HashMap;
@@ -25,6 +26,7 @@ public class ConfigManager {
                     throw new RuntimeException("Invalid YML formatting.");
                 Map<?, ?> redeemMap = (Map<?, ?>) redeemObject;
 
+                Sound sound = Sound.valueOf(plugin.getRewardManager().getPlugin().getConfig().getString("Sound"));
 
                 for (Object redeemID : redeemMap.keySet()) {
                     //For each redeem:
@@ -123,7 +125,7 @@ public class ConfigManager {
                     }
 
                     plugin.getRewardManager().addRedeem(redeemIDString, redeemData_RewardManager);
-
+                    plugin.setSound(sound);
 
                 }
 

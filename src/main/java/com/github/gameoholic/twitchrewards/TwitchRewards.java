@@ -7,6 +7,7 @@ import com.github.gameoholic.twitchrewards.listeners.PlayerInteractListener;
 import com.github.gameoholic.twitchrewards.listeners.PlayerJoinListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ public final class TwitchRewards extends JavaPlugin {
     private RewardManager rewardManager;
     private ConfigManager configManager;
     private TwitchManager twitchManager;
-
     private List<String> playerUsernames = new ArrayList<>();
+    private Sound sound;
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -70,6 +71,13 @@ public final class TwitchRewards extends JavaPlugin {
     public void setPlayerUsernames(List<String> playerUsernames) {
         this.playerUsernames = playerUsernames;
 
+    }
+    public Sound getSound() {
+        return sound;
+    }
+
+    public void setSound(Sound sound) {
+        this.sound = sound;
     }
 
 

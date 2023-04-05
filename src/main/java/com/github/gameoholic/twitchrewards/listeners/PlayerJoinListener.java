@@ -22,18 +22,33 @@ public class PlayerJoinListener implements Listener {
         if (task.isPresent()) {
             WhitelistTask whitelistTask = task.get();
             Player player = e.getPlayer();
-            Player affectedPlayer = whitelistTask.getAffectedPlayer();
 
-            player.teleport(whitelistTask.getAffectedPlayer());
-            player.setBedSpawnLocation(whitelistTask.getAffectedPlayer().getLocation());
+            Player affectedPlayer = null;
+            for (String affectedPlayerUsername: whitelistTask.getAffectedPlayers()) {
+                affectedPlayer = Bukkit.getPlayer(affectedPlayerUsername);
+                if (affectedPlayer != null)
+                    break;
+            }
+
+            if (affectedPlayer != null) {
+                player.teleport(affectedPlayer);
+                player.setBedSpawnLocation(affectedPlayer.getLocation());
+            }
 
             if (!whitelistTask.hasJoined()) {
                 for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
                     onlinePlayer.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 1.0f, 1.0f);
                 }
-                affectedPlayer.spawnParticle(Particle.FLAME,
-                        affectedPlayer.getLocation().getX(), affectedPlayer.getLocation().getY(),
-                        affectedPlayer.getLocation().getZ(), 50, 0, 0.2, 0, 0.2);
+                if (affectedPlayer != null) {
+                    affectedPlayer.spawnParticle(Particle.FLAME,
+                            affectedPlayer.getLocation().getX(), affectedPlayer.getLocation().getY(),
+                            affectedPlayer.getLocation().getZ(), 50, 0, 0.2, 0, 0.2);
+                }
+                else {
+                    player.spawnParticle(Particle.FLAME,
+                            player.getLocation().getX(), player.getLocation().getY(),
+                            player.getLocation().getZ(), 50, 0, 0.2, 0, 0.2);
+                }
                 whitelistTask.setJoined(true);
             }
 
