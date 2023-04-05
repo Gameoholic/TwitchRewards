@@ -20,7 +20,7 @@ A 1.19 plugin designed for streamers who want to engage their audience. Allows y
 2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your redeems!
 3. Run /startredeems and follow the instructions.
 
-Test redeems with /testredeem <Redeem name>
+Test redeems with /testredeem \<Redeem name\>
 
 **Important**
 ---
