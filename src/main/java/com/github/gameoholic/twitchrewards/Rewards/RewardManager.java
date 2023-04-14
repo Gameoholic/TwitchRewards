@@ -46,10 +46,10 @@ public class RewardManager {
         for (String playerUsername : plugin.getPlayerUsernames()) {
             Player player = Bukkit.getPlayer(playerUsername);
 
-            player.playSound(player.getLocation(), plugin.getSound(), 1.0f, 1.0f);
-
             if (player == null)
                 continue;
+
+            player.playSound(player.getLocation(), plugin.getSound(), 1.0f, 1.0f);
 
             switch (rewardType) {
                 case SPAWN_ENTITY:
