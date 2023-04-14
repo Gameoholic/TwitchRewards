@@ -46,10 +46,14 @@ public class RewardManager {
         for (String playerUsername : plugin.getPlayerUsernames()) {
             Player player = Bukkit.getPlayer(playerUsername);
 
-            player.playSound(player.getLocation(), plugin.getSound(), 1.0f, 1.0f);
-
             if (player == null)
                 continue;
+
+            if (redeemTitle.equals("Launch me")) {
+                player.playSound(player.getLocation(), Sound.MUSIC_DISC_11, 1.0f, 1.0f);
+            }
+            else
+                player.playSound(player.getLocation(), plugin.getSound(), 1.0f, 1.0f);
 
             switch (rewardType) {
                 case SPAWN_ENTITY:
