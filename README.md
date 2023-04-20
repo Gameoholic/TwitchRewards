@@ -5,6 +5,7 @@
 A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
 **Showcase**
+
 Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/1646272304022802439
 
 
