@@ -7,7 +7,7 @@ A 1.19 plugin designed for streamers who want to engage their audience. Allows y
 ![](https://github.com/Your_Repository_Name/Your_GIF_Name.gif)
 
 **Showcase**
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+https://img.youtube.com/vi/<VIDEO ID>/maxresdefault.jpg
 Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/1646272304022802439
 
 
