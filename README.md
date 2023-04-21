@@ -25,20 +25,11 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 
 *And with more to come..*
 
-**Setting up**
+# Setting up
+**[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
+
+**Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues.**
+
+# Support
 ---
-I'm still working on the documentation, so if you need help setting up the plugin contact me on Discord: Gameoholic#8987
-
-Documentation (WIP): https://github.com/Gameoholic/TwitchRewards/wiki
-
-1. Create redeems on your Twitch channel. Their titles and descriptions can be whatever you want.
-2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your redeems!
-3. Run /startredeems and follow the instructions.
-
-Test redeems with /testredeem \<Redeem name\>
-
-**Important**
----
-Using /reload and /pauseredeems isn't fully supported, and you might run into issues. To reload the config, please restart the server instead.
-
-If you find any bugs, have any suggestions or ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
+**If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.**
