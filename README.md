@@ -2,7 +2,7 @@
 
 **Twitch Rewards**
 ---
-A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
+A 1.19 Spigot plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
 https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-b05f-fbeb5cb4b7ae.mp4
 
