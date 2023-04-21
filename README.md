@@ -31,5 +31,4 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 **Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues.**
 
 # Support
----
 **If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.**
