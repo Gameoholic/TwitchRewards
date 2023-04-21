@@ -18,7 +18,7 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 **Features**
 ---
 + Easy to set up
-    - Just one command is all it takes! (almost)
+    - Link your Twitch channel in less than a minute!
 + 14 configurable reward types
 + Affect multiple players at the same time
     - You may select multiple players to be affected by redeems, or only yourself!
