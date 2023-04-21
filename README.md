@@ -27,6 +27,7 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 
 **Setting up**
 ---
+I'm still working on the documentation, so if you need help setting up the plugin contact me on Discord: Gameoholic#8987
 1. Create redeems on your Twitch channel. Their titles and descriptions can be whatever you want.
 2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your redeems!
 3. Run /startredeems and follow the instructions.
