@@ -4,7 +4,7 @@
 ---
 A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
-https://user-images.githubusercontent.com/30177004/233593222-0ca4a3e5-5c40-4828-8e08-2f2daa82f4a6.mp4
+https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-b05f-fbeb5cb4b7ae.mp4
 
 (video is low quality because the size limit is 10MB lol)
 
