@@ -2,28 +2,33 @@
 
 **Twitch Rewards**
 ---
-A 1.19 plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
+A 1.19 Spigot plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
+
+https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-b05f-fbeb5cb4b7ae.mp4
+
+(video is low quality because the size limit is 10MB lol)
+
+**Showcase**
+
+Plugin showcase video: https://youtu.be/quovjhnDzT0
+
+Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/1646272304022802439
+
 
 **Features**
 ---
 + Easy to set up
-    - Just one command is all it takes! (almost)
+    - Link your Twitch channel in less than a minute!
 + 14 configurable reward types
 + Affect multiple players at the same time
     - You may select multiple players to be affected by redeems, or only yourself!
 
 *And with more to come..*
 
-**Setting up**
----
-1. Create redeems on your Twitch channel. Their titles and descriptions can be whatever you want.
-2. Make sure to edit the configuration file (located in Plugins/TwitchRewards/config.yml) to match your redeems!
-3. Run /startredeems and follow the instructions.
+# Setting up
+**[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
 
-Test redeems with /testredeem \<Redeem name\>
+**Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues.**
 
-**Important**
----
-Using /reload and /pauseredeems isn't fully supported, and you might run into issues. To reload the config, please restart the server instead.
-
-If you find any bugs, have any suggestions or ideas for cool rewards, message me on Discord: Gameoholic#8987 or create an Issue thread.
+# Support
+If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.
