@@ -6,7 +6,7 @@
 
     <groupId>com.github.gameoholic</groupId>
     <artifactId>TwitchRewards</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <packaging>jar</packaging>
 
     <name>TwitchRewards</name>
@@ -49,7 +49,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>D:\Plugins\Server\Spigot\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\Game\Plugins\Server\Paper\plugins</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

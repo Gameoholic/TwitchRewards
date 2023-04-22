@@ -4,9 +4,11 @@
 # +------------------------------------------------------+ #
 ############################################################
 
+#If you need help setting up the plugin, contact Gameoholic#8987 on Discord
+
 #------------ MANAGING REDEEMS ------------
 
-#Consult the full documentation (LINK_HERE) on how to manage and customize your redeems. Otherwise, you may use
+#Consult the full documentation on how to manage and customize your redeems. Otherwise, you may use
 #one of the redeem templates located in the RedeemTemplates folder.
 
 #The first line of each redeem is the redeem's title, and must match the redeem you have on your Twitch channel.
@@ -56,7 +58,7 @@ Redeems:
       - Reward: DropInventory
   - God Mode:
       - Reward: GodMode
-      - GodModeDuration: 15
+      - GodModeDuration: 3
   - Flight:
       - Reward: Flight
       - FlightDuration: 10

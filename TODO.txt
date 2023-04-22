@@ -1,6 +1,7 @@
-Multiple streamers on the same server.
 Configurable redeem messages.
 Allow customizable random values, for example: "1-5".
 Better config error messages.
 Full support for reloading.
-Add docs.
+Launch velocity not random
+Multiple streamer support
+whitelist redeem: Add teleport item

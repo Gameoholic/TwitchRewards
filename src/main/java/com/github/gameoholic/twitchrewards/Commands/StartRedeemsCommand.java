@@ -1,10 +1,14 @@
 package com.github.gameoholic.twitchrewards.Commands;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -51,8 +55,11 @@ public class StartRedeemsCommand implements CommandExecutor {
             invalidRequest = true;
         }
 
+
         if (invalidRequest) {
-            sender.sendMessage(ChatColor.YELLOW + "It looks like this is your first time using the plugin. \n" +
+            Boolean usedBefore = plugin.getConfig().getBoolean("UsedBefore");
+            if (!usedBefore)
+                sender.sendMessage(ChatColor.YELLOW + "It looks like this is your first time using the plugin. \n" +
                     "Please follow the following instructions to set up the plugin:\n" +
                     "1. Go to https://twitchtokengenerator.com/\n2. Select 'Custom Scope Token'.\n3. Scroll down and " +
                     "enable channel:read:redemptions.\n4. Click 'Generate Token' and select 'Authorize'. \n5. " +
@@ -67,6 +74,8 @@ public class StartRedeemsCommand implements CommandExecutor {
 
 
         plugin.getTwitchManager().startClient(sender);
+        plugin.getConfig().set("UsedBefore", true);
+        plugin.saveConfig();
         return true;
     }
 }
