@@ -13,7 +13,8 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 public class Whitelist {
-    public static void addToWhitelist(TwitchRewards plugin, String playerUsername, List<String> affectedPlayers, int time) {
+    public static void addToWhitelist(TwitchRewards plugin, String playerUsername, List<String> affectedPlayers, int time,
+                                      int teleportCooldown) {
 
         //No duplicate tasks. If new, just change existing one's time
         Optional<WhitelistTask> task = WhitelistTask.whitelistTasks.stream()
@@ -31,7 +32,7 @@ public class Whitelist {
                         collect(Collectors.toList()).contains(playerUsername.toLowerCase())) {
                     throw new RuntimeException("Invalid username");
                 }
-                new WhitelistTask(plugin, playerUsername, affectedPlayers, time);
+                new WhitelistTask(plugin, playerUsername, affectedPlayers, time, teleportCooldown);
             }
             catch (Exception e) {
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] Couldn't add player \"" + playerUsername +

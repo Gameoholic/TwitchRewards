@@ -58,16 +58,17 @@ public class StartRedeemsCommand implements CommandExecutor {
 
         if (invalidRequest) {
             Boolean usedBefore = plugin.getConfig().getBoolean("UsedBefore");
-            if (!usedBefore)
-                sender.sendMessage(ChatColor.YELLOW + "It looks like this is your first time using the plugin. \n" +
-                    "Please follow the following instructions to set up the plugin:\n" +
-                    "1. Go to https://twitchtokengenerator.com/\n2. Select 'Custom Scope Token'.\n3. Scroll down and " +
-                    "enable channel:read:redemptions.\n4. Click 'Generate Token' and select 'Authorize'. \n5. " +
-                    "Copy the ACCESS TOKEN and CLIENT ID, and set them using /setaccesstoken <access token> and " +
-                    "/setclientid <client ID>.\n6. Provide the streamer username using /setstreamer <streamer username>, " +
-                    "and select the player/s whom you want redeems to affect using " +
-                    "/setredeemplayer <player username/s (separated with spaces)>. \n7. Run /startredeems\n\n" +
-                    "Don't forget to create redeems on your Twitch channel and edit the config file to match them.");
+            if (!usedBefore) {
+                TextComponent message = new TextComponent(ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.GREEN + "It seems like it's" +
+                        " your first time using the plugin. Please refer to the documentation to set up the plugin: ");
+                TextComponent link = new TextComponent("https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up#linking-to-twitch");
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up#linking-to-twitch"));
+                link.setColor(net.md_5.bungee.api.ChatColor.BLUE);
+                message.addExtra(link);
+                message.addExtra(ChatColor.GREEN + " \nIt will take less than a minute! \nIf you need further assistance," +
+                        " contact Gameoholic#8987 on Discord for help.");
+                Bukkit.spigot().broadcast(message);
+            }
             return true;
         }
 

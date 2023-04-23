@@ -112,6 +112,10 @@ public class ConfigManager {
                                     validateWhitelistDurationDataKey(rewardType);
                                     redeemData_RewardManager.put("WhitelistDuration", redeemDataValue);
                                     break;
+                                case "TeleportCooldown":
+                                    validateTeleportCooldownDataKey(rewardType);
+                                    redeemData_RewardManager.put("TeleportCooldown", redeemDataValue);
+                                    break;
                                 case "Count":
                                     validateCountDataKey(rewardType);
                                     redeemData_RewardManager.put("Count", redeemDataValue);
@@ -154,10 +158,16 @@ public class ConfigManager {
             String redeemKey = entry.getKey();
             Map<String, ?> redeemValues = entry.getValue();
 
-            System.out.println("Redeem key: " + redeemKey);
-            System.out.println("Redeem values: " + redeemValues.toString());
+            plugin.getLogger().info("Redeem key: " + redeemKey);
+            plugin.getLogger().info("Redeem values: " + redeemValues.toString());
         }
 
+    }
+
+    private void validateTeleportCooldownDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.ADD_TO_WHITELIST) {
+            throw new RuntimeException("Invalid Teleport Cooldown argument.");
+        }
     }
 
 

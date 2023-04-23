@@ -29,6 +29,17 @@ public class TestRedeemCommand implements CommandExecutor {
             }
         }
 
+        if (args[0].equals("test")) {
+            if (sender instanceof Player player) {
+                List<String> tempPlayerUsernames = new ArrayList<>();
+                List<String> playerUsernames = plugin.getPlayerUsernames();
+                tempPlayerUsernames.add(player.getName());
+
+                plugin.setPlayerUsernames(tempPlayerUsernames);
+                plugin.getRewardManager().activateChannelPointReward(sender.getName(), "Whitelist", 0, "MCCIMODRANK");
+                plugin.setPlayerUsernames(playerUsernames);
+            }
+        }
         String redeemName = "";
         for (String arg: args) {
             redeemName += arg + " ";

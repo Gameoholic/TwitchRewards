@@ -2,6 +2,12 @@ Configurable redeem messages.
 Allow customizable random values, for example: "1-5".
 Better config error messages.
 Full support for reloading.
-Launch velocity not random
+bScript support
 Multiple streamer support
-whitelist redeem: Add teleport item
+
+
+Changelog:
++ Fixed clutch challenge closed spaces bug
++ Added a message for when the plugin is used for the first time
++ Better /startredeems messages
++ Added teleport item for whitelisted players

@@ -20,10 +20,14 @@ public class WhitelistTask extends BukkitRunnable {
     private String playerUsername;
     private List<String> affectedPlayers;
     private boolean joined = false;
-    public WhitelistTask(TwitchRewards plugin, String playerUsername, List<String> affectedPlayers, int time) {
+    private int compassCooldown = 0;
+    private int maxCompassCooldown;
+    public WhitelistTask(TwitchRewards plugin, String playerUsername, List<String> affectedPlayers, int time,
+                         int teleportCooldown) {
         timeLeft = time + 1;
         this.playerUsername = playerUsername;
         this.affectedPlayers = affectedPlayers;
+        this.maxCompassCooldown = teleportCooldown;
         runTaskTimer(plugin, 0L, 20L);
         whitelistTasks.add(this);
     }
@@ -32,6 +36,9 @@ public class WhitelistTask extends BukkitRunnable {
     @Override
     public void run() {
         timeLeft--;
+        if (compassCooldown > 0)
+            compassCooldown--;
+
         Player player = Bukkit.getPlayer(playerUsername);
         if (player != null) {
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(
@@ -67,5 +74,16 @@ public class WhitelistTask extends BukkitRunnable {
     }
     public List<String> getAffectedPlayers() {
         return affectedPlayers;
+    }
+
+    public int getCompassCooldown() {
+        return compassCooldown;
+    }
+
+    public void setCompassCooldown(int compassCooldown) {
+        this.compassCooldown = compassCooldown;
+    }
+    public int getMaxCompassCooldown() {
+        return maxCompassCooldown;
     }
 }

@@ -224,8 +224,16 @@ public class RewardManager {
                     }
                 else
                     whitelistDuration = (int) redeemData.get("WhitelistDuration");
+
+                int teleportCooldown;
+                if (redeemData.get("TeleportCooldown").toString().toUpperCase().equals("RANDOM")) {
+                    teleportCooldown = rnd.nextInt(125) + 5;
+                }
+                else
+                    teleportCooldown = (int) redeemData.get("TeleportCooldown");
+
                 Whitelist.addToWhitelist(plugin, input.substring(0, Math.min(input.length(), 15)),
-                        plugin.getPlayerUsernames(), whitelistDuration);
+                        plugin.getPlayerUsernames(), whitelistDuration, teleportCooldown);
                 break;
         }
 

@@ -42,6 +42,7 @@ Redeems:
   - /Whitelist add ___:
       - Reward: AddToWhitelist
       - WhitelistDuration: 10
+      - TeleportCooldown: 60
   - Spawn 10 Wardens:
       - Reward: SpawnEntity
       - Entity: WARDEN
