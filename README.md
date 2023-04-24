@@ -21,7 +21,7 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
     - Link your Twitch channel in less than a minute!
 + 14 configurable reward types
 + Multiple streamer support
-    - Have everybody's chats' redeems affect player! (only if you want to, it's very chaotic!)
+    - Have everybody's chats' redeems affect every player! (only if you want to, it's very chaotic!)
 + Affect multiple players at the same time
     - You may select multiple players to be affected by redeems, or only yourself!
 
