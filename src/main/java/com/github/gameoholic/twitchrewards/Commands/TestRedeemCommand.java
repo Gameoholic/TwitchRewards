@@ -9,8 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TestRedeemCommand implements CommandExecutor {
 
@@ -28,10 +27,14 @@ public class TestRedeemCommand implements CommandExecutor {
                 return true;
             }
         }
-        
+
+        if (args.length < 2) {
+            sender.sendMessage(ChatColor.RED + "Incorrect command usage! /testredeem <streamer name> <redeem name>");
+            return true;
+        }
         String redeemName = "";
-        for (String arg: args) {
-            redeemName += arg + " ";
+        for (int i = 1; i < args.length; i++) {
+            redeemName += args[i] + " ";
         }
         if (redeemName.length() > 0)
             redeemName = redeemName.substring(0, redeemName.length() - 1);
@@ -39,17 +42,26 @@ public class TestRedeemCommand implements CommandExecutor {
         //If Twitch client wasn't set up yet, allow temporary usage of command on command sender
         if (plugin.getTwitchManager().getTwitchClient() == null) {
             if (sender instanceof Player player) {
-                List<String> tempPlayerUsernames = new ArrayList<>();
-                List<String> playerUsernames = plugin.getPlayerUsernames();
-                tempPlayerUsernames.add(player.getName());
-
-                plugin.setPlayerUsernames(tempPlayerUsernames);
-                plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
-                plugin.setPlayerUsernames(playerUsernames);
+                List<String> redeemPlayers = new ArrayList<>();
+                redeemPlayers.add(player.getName());
+                plugin.getRewardManager().activateChannelPointReward(args[0], redeemPlayers, sender.getName(), redeemName, 0, "");
             }
         }
-        else
-            plugin.getRewardManager().activateChannelPointReward(sender.getName(), redeemName, 0, "");
+        else {
+            //TODO: learn how the fuck this works
+            List<String> redeemPlayers = plugin.getTwitchManager().getStreamers().stream()
+                .map(HashMap::entrySet)
+                .flatMap(Collection::stream)
+                .filter(entry -> entry.getKey().getLeft().equals(args[0]))
+                .map(Map.Entry::getValue)
+                .findFirst()
+                .orElse(null);
+            if (redeemPlayers == null)  {
+                sender.sendMessage(ChatColor.RED + "Invalid streamer username!");
+                return true;
+            }
+            plugin.getRewardManager().activateChannelPointReward(args[0], redeemPlayers, sender.getName(), redeemName, 0, "");
+        }
         return true;
     }
 

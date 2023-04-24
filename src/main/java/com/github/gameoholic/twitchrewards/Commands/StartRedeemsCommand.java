@@ -3,6 +3,7 @@ package com.github.gameoholic.twitchrewards.Commands;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,6 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginIdentifiableCommand;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class StartRedeemsCommand implements CommandExecutor {
@@ -28,20 +30,16 @@ public class StartRedeemsCommand implements CommandExecutor {
             }
         }
 
-        List<String> redeemPlayers = plugin.getConfig().getStringList("RedeemPlayers");
         String accessToken = plugin.getConfig().getString("AccessToken");
         String clientId = plugin.getConfig().getString("ClientID");
-        String streamerUsername = plugin.getConfig().getString("StreamerUsername");
+        List<HashMap<String, List<String>>> streamerConfigList = (List<HashMap<String, List<String>>>)
+            plugin.getConfig().getList("Streamers");
 
         if (plugin.getTwitchManager().getTwitchClient() != null) {
             sender.sendMessage(ChatColor.RED + "Twitch Client is already running!");
             return true;
         }
         boolean invalidRequest = false;
-        if (redeemPlayers.isEmpty()) {
-            sender.sendMessage(ChatColor.RED + "Redeem player not set. Use /setredeemplayer <player username/s>");
-            invalidRequest = true;
-        }
         if (accessToken == null) {
             sender.sendMessage(ChatColor.RED + "Twitch access token not set. Use /setaccesstoken <token>");
             invalidRequest = true;
@@ -50,11 +48,10 @@ public class StartRedeemsCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Twitch client ID not set. Use /setclientid <id>");
             invalidRequest = true;
         }
-        if (streamerUsername == null) {
-            sender.sendMessage(ChatColor.RED + "Streamer not set. Use /setstreamer <username>");
+        if (streamerConfigList == null || streamerConfigList.isEmpty()) {
+            sender.sendMessage(ChatColor.RED + "Twitch streamers not set. Use /addstreamer <twitch username>");
             invalidRequest = true;
         }
-
 
         if (invalidRequest) {
             Boolean usedBefore = plugin.getConfig().getBoolean("UsedBefore");
@@ -73,10 +70,29 @@ public class StartRedeemsCommand implements CommandExecutor {
         }
 
 
+        if (!plugin.isStartRedeemsConfirmed()) {
+            plugin.setStartRedeemsConfirmed(true);
+            sender.sendMessage(ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.GREEN + "Selected streamers:");
 
-        plugin.getTwitchManager().startClient(sender);
-        plugin.getConfig().set("UsedBefore", true);
-        plugin.saveConfig();
+            for (HashMap<String, List<String>> streamerByUsername: streamerConfigList) {
+                String streamerUsername = (String) streamerByUsername.keySet().toArray()[0];
+                List<String> redeemPlayers = streamerByUsername.get(streamerUsername);
+
+                sender.sendMessage(ChatColor.GREEN + streamerUsername + ChatColor.YELLOW + "'s redeems will affect: " +
+                    ChatColor.AQUA + redeemPlayers);
+            }
+            sender.sendMessage(ChatColor.YELLOW + "To modify, use /addstreamer <username> and /removestreamer <username>.\n" +
+                ChatColor.GREEN + "To start listening to redeems, run /startredeems again.");
+        }
+        else {
+            plugin.setStreamerList(streamerConfigList);
+
+            plugin.getConfig().set("UsedBefore", true);
+            plugin.saveConfig();
+
+            plugin.getTwitchManager().startClient(sender);
+            plugin.setStartRedeemsConfirmed(false);
+        }
         return true;
     }
 }

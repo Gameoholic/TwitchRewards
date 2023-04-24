@@ -6,7 +6,7 @@
 
     <groupId>com.github.gameoholic</groupId>
     <artifactId>TwitchRewards</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>TwitchRewards</name>

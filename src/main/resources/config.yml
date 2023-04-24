@@ -6,18 +6,27 @@
 
 #If you need help setting up the plugin, contact Gameoholic#8987 on Discord
 
+#------------ GENERAL SETTINGS ------------
+
+#-Sound that plays when a redeem is used-
+Sound: BLOCK_GLASS_BREAK #Sounds here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+
+#-Message that gets sent when a redeem is redeemed-
+#Color codes here: https://www.digminecraft.com/lists/color_list_pc.php
+#Recommended value for one streamer: "&eACTIVATOR_USERNAME activated &bREDEEM_TITLE &efor POINTS points. MESSAGE"
+#Recommended value for multiple streamers: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TITLE &efor POINTS points. MESSAGE"
+RedeemMessage: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TITLE &efor POINTS points. MESSAGE"
+
 #------------ MANAGING REDEEMS ------------
 
-#Consult the full documentation on how to manage and customize your redeems. Otherwise, you may use
-#one of the redeem templates located in the RedeemTemplates folder.
+#Consult the full documentation on how to manage and customize your redeems:
+#https://github.com/Gameoholic/TwitchRewards/wiki/Editing-the-Config-file
+#Otherwise, you may use one of the redeem templates located in the RedeemTemplates folder.
 
 #The first line of each redeem is the redeem's title, and must match the redeem you have on your Twitch channel.
-#The current Redeems configuration is below, and you may use it or edit it however you want.
+#The default Redeems configuration is below, and you may use it or edit it however you want.
 
 #Don't forget to restart the server after making changes to this file!
-
-#Sound that plays when a redeem is used
-Sound: BLOCK_GLASS_BREAK #Sounds here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
 
 Redeems:
   - Give me a random item: #Redeem's title, must match the one you have on Twitch
@@ -62,3 +71,5 @@ Redeems:
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
+
+#END OF REDEEMS

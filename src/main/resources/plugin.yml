@@ -9,12 +9,15 @@ commands:
   testredeem:
     description: Test a redeem (for debugging purposes)
     usage: /testredeem <redeem name>
-  setstreamer:
-    description: Sets the streamer
-    usage: /setstreamer <streamer username>
-  setredeemplayer:
+  addstreamer:
+    description: Adds a streamer
+    usage: /addstreamer <streamer username>
+  removestreamer:
+    description: Removes a streamer
+    usage: /removestreamer <streamer username>
+  setredeemplayers:
     description: Sets the player/s to be affected by redeems, separate players with spaces
-    usage: /setredeemplayer <player username/s>
+    usage: /setredeemplayers <player username/s>
   setclientid:
     description: Sets the client ID
     usage: /setclientid <client ID>

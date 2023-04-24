@@ -5,13 +5,13 @@ import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -30,20 +30,23 @@ public class RewardManager {
         rnd = new Random();
     }
 
-    public void activateChannelPointReward(String activatorUsername, String redeemTitle, int points, String input) {
+    public void activateChannelPointReward(String streamerUsername, List<String> redeemUsernames,
+                                           String activatorUsername, String redeemTitle, int points, String input) {
         if (!redeems.containsKey(redeemTitle))
             return;
+
 
         String inputString = "";
         if (input != "" && input != null)
             inputString = " \"" + input + "\"";
-        Bukkit.broadcastMessage(ChatColor.YELLOW + activatorUsername + " activated " + ChatColor.AQUA
-                + redeemTitle + ChatColor.YELLOW + " for " + points + " points." + inputString);
+
+        Bukkit.broadcastMessage(interpolateRedeemMessage(plugin.getRedeemMessage(), streamerUsername, activatorUsername,
+            redeemTitle, points, inputString));
 
         Map<String, ?> redeemData = redeems.get(redeemTitle);
         RewardType rewardType = (RewardType) redeemData.get("Reward");
 
-        for (String playerUsername : plugin.getPlayerUsernames()) {
+        for (String playerUsername : redeemUsernames) {
             Player player = Bukkit.getPlayer(playerUsername);
 
             if (player == null)
@@ -233,12 +236,25 @@ public class RewardManager {
                     teleportCooldown = (int) redeemData.get("TeleportCooldown");
 
                 Whitelist.addToWhitelist(plugin, input.substring(0, Math.min(input.length(), 15)),
-                        plugin.getPlayerUsernames(), whitelistDuration, teleportCooldown);
+                    redeemUsernames, whitelistDuration, teleportCooldown);
                 break;
         }
 
 
     }
+
+    private String interpolateRedeemMessage(String redeemMessage, String streamerUsername, String activatorUsername,
+                                            String redeemTitle, int points, String input) {
+        redeemMessage = ChatColor.translateAlternateColorCodes('&', redeemMessage)
+            .replaceAll("STREAMER_USERNAME", streamerUsername)
+            .replaceAll("ACTIVATOR_USERNAME", activatorUsername)
+            .replaceAll("REDEEM_TITLE", redeemTitle)
+            .replaceAll("POINTS", points + "")
+            .replaceAll("MESSAGE", input);
+
+        return redeemMessage;
+    }
+
     public void addRedeem(String redeemID, Map<String, Object> redeemData) {
         redeems.put(redeemID, redeemData);
     }

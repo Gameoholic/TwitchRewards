@@ -54,12 +54,13 @@ public class PlayerJoinListener implements Listener {
                             player.getLocation().getZ(), 100, 0, 0.2, 0, 0.2);
                 }
             }
-            ItemStack item = new ItemStack(Material.COMPASS, 1);
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName("Teleport to Streamer");
-            item.setItemMeta(meta);
-            player.getInventory().addItem(item);
-
+            if (task.get().getCompassCooldown() != -1) {
+                ItemStack item = new ItemStack(Material.COMPASS, 1);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName("Teleport to Streamer");
+                item.setItemMeta(meta);
+                player.getInventory().addItem(item);
+            }
         }
 
 

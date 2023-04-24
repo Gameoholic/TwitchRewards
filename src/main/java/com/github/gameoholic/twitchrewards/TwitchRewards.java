@@ -13,15 +13,20 @@ import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class TwitchRewards extends JavaPlugin {
 
     private RewardManager rewardManager;
     private ConfigManager configManager;
     private TwitchManager twitchManager;
-    private List<String> playerUsernames = new ArrayList<>();
+    private boolean startRedeemsConfirmed = false;
+    private Map<String, String> addStreamerCommandCache = new HashMap<String, String>(); //Executor username -> Streamer username
+    private List<HashMap<String, List<String>>> streamerList;
     private Sound sound;
+    private String redeemMessage;
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -37,8 +42,9 @@ public final class TwitchRewards extends JavaPlugin {
 
         //Commands:
         getCommand("testredeem").setExecutor(new TestRedeemCommand(this));
-        getCommand("setstreamer").setExecutor(new SetStreamerCommand(this));
-        getCommand("setredeemplayer").setExecutor(new SetRedeemPlayerCommand(this));
+        getCommand("addstreamer").setExecutor(new AddStreamerCommand(this));
+        getCommand("removestreamer").setExecutor(new RemoveStreamerCommand(this));
+        getCommand("setredeemplayers").setExecutor(new SetRedeemPlayersCommand(this));
         getCommand("setclientid").setExecutor(new SetClientIdCommand(this));
         getCommand("setaccesstoken").setExecutor(new SetAccessTokenCommand(this));
         getCommand("startredeems").setExecutor(new StartRedeemsCommand(this));
@@ -81,13 +87,12 @@ public final class TwitchRewards extends JavaPlugin {
     public TwitchManager getTwitchManager() {
         return twitchManager;
     }
-    public List<String> getPlayerUsernames() {
-        return playerUsernames;
+    public List<HashMap<String, List<String>>> getStreamerList() {
+        return streamerList;
     }
 
-    public void setPlayerUsernames(List<String> playerUsernames) {
-        this.playerUsernames = playerUsernames;
-
+    public void setStreamerList(List<HashMap<String, List<String>>> streamerList) {
+        this.streamerList = streamerList;
     }
     public Sound getSound() {
         return sound;
@@ -95,6 +100,24 @@ public final class TwitchRewards extends JavaPlugin {
 
     public void setSound(Sound sound) {
         this.sound = sound;
+    }
+    public Map<String, String> getAddStreamerCommandCache() {
+        return addStreamerCommandCache;
+    }
+    public boolean isStartRedeemsConfirmed() {
+        return startRedeemsConfirmed;
+    }
+
+    public void setStartRedeemsConfirmed(boolean startRedeemsConfirmed) {
+        this.startRedeemsConfirmed = startRedeemsConfirmed;
+    }
+
+    public String getRedeemMessage() {
+        return redeemMessage;
+    }
+
+    public void setRedeemMessage(String redeemMessage) {
+        this.redeemMessage = redeemMessage;
     }
 
 

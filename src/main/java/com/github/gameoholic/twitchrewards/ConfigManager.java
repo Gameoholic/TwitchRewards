@@ -27,6 +27,8 @@ public class ConfigManager {
                 Map<?, ?> redeemMap = (Map<?, ?>) redeemObject;
 
                 Sound sound = Sound.valueOf(plugin.getRewardManager().getPlugin().getConfig().getString("Sound"));
+                String redeemMessage = plugin.getRewardManager().getPlugin().getConfig().getString("RedeemMessage");
+
 
                 for (Object redeemID : redeemMap.keySet()) {
                     //For each redeem:
@@ -130,6 +132,7 @@ public class ConfigManager {
 
                     plugin.getRewardManager().addRedeem(redeemIDString, redeemData_RewardManager);
                     plugin.setSound(sound);
+                    plugin.setRedeemMessage(redeemMessage);
 
                 }
 
