@@ -20,15 +20,17 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 + Easy to set up
     - Link your Twitch channel in less than a minute!
 + 14 configurable reward types
++ Multiple streamer support
+    - Have everybody's chats' redeems affect every player! (only if you want to, it's very chaotic!)
 + Affect multiple players at the same time
     - You may select multiple players to be affected by redeems, or only yourself!
 
 *And with more to come..*
 
 # Setting up
-**[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
+See **[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
 
-**Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues.**
+**Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues. It's recommended to restart the server instead.**
 
 # Support
 If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.
