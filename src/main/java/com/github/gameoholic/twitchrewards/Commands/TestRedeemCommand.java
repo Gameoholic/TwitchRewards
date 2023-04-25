@@ -63,7 +63,7 @@ public class TestRedeemCommand implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "Invalid streamer username!");
                 return true;
             }
-            plugin.getRewardManager().activateChannelPointReward(redeemData.getLeft(), redeemData.getRight(), sender.getName(), redeemName, 0, "Gameoholic_");
+            plugin.getRewardManager().activateChannelPointReward(redeemData.getLeft(), redeemData.getRight(), sender.getName(), redeemName, 0, "");
         }
         return true;
     }
