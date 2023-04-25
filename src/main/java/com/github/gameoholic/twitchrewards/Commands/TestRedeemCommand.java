@@ -2,6 +2,7 @@ package com.github.gameoholic.twitchrewards.Commands;
 
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
+import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -49,18 +50,20 @@ public class TestRedeemCommand implements CommandExecutor {
         }
         else {
             //TODO: learn how the fuck this works
-            List<String> redeemPlayers = plugin.getTwitchManager().getStreamers().stream()
+            //Pair of streamer ID, and the redeemPlayers
+            Pair<String, List<String>> redeemData = plugin.getTwitchManager().getStreamers().stream()
                 .map(HashMap::entrySet)
                 .flatMap(Collection::stream)
-                .filter(entry -> entry.getKey().getLeft().equals(args[0]))
-                .map(Map.Entry::getValue)
+                .filter(entry -> entry.getKey().getLeft().toLowerCase().equals(args[0].toLowerCase()))
+                .map(entry -> Pair.of(entry.getKey().getLeft(), entry.getValue()))
                 .findFirst()
                 .orElse(null);
-            if (redeemPlayers == null)  {
+
+            if (redeemData == null)  {
                 sender.sendMessage(ChatColor.RED + "Invalid streamer username!");
                 return true;
             }
-            plugin.getRewardManager().activateChannelPointReward(args[0], redeemPlayers, sender.getName(), redeemName, 0, "");
+            plugin.getRewardManager().activateChannelPointReward(redeemData.getLeft(), redeemData.getRight(), sender.getName(), redeemName, 0, "Gameoholic_");
         }
         return true;
     }

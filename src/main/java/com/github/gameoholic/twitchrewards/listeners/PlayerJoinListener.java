@@ -33,26 +33,25 @@ public class PlayerJoinListener implements Listener {
                     break;
             }
 
-            if (affectedPlayer != null) {
-                player.teleport(affectedPlayer);
-                player.setBedSpawnLocation(affectedPlayer.getLocation());
-            }
-
             if (!whitelistTask.hasJoined()) {
                 whitelistTask.setJoined(true);
+                System.out.println(Bukkit.getOnlinePlayers());
                 for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
+                    System.out.println(onlinePlayer);
                     onlinePlayer.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 1.0f, 1.0f);
                 }
+                System.out.println("lol");
+                System.out.println(affectedPlayer);
                 if (affectedPlayer != null) {
                     affectedPlayer.spawnParticle(Particle.FLAME,
                             affectedPlayer.getLocation().getX(), affectedPlayer.getLocation().getY(),
                             affectedPlayer.getLocation().getZ(), 50, 0, 0.2, 0, 0.2);
+                    player.teleport(affectedPlayer);
+                    player.setBedSpawnLocation(affectedPlayer.getLocation());
                 }
-                else {
-                    player.spawnParticle(Particle.FLAME,
-                            player.getLocation().getX(), player.getLocation().getY(),
-                            player.getLocation().getZ(), 100, 0, 0.2, 0, 0.2);
-                }
+                player.spawnParticle(Particle.FLAME,
+                        player.getLocation().getX(), player.getLocation().getY(),
+                        player.getLocation().getZ(), 100, 0, 0.2, 0, 0.2);
             }
             if (task.get().getCompassCooldown() != -1) {
                 ItemStack item = new ItemStack(Material.COMPASS, 1);

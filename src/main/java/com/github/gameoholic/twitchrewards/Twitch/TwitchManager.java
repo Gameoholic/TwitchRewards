@@ -15,6 +15,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import java.util.*;
+import java.util.logging.Level;
 
 public class TwitchManager {
 
@@ -25,7 +26,7 @@ public class TwitchManager {
     private String accessToken;
     //List of StreamerUsername, StreamerID pairs, where the values are the MC players whom to affect
     List<HashMap<Pair<String, String>, List<String>>> streamers;
-    private List<PubSubSubscription> channelPointEventSubs;
+    private PubSubSubscription channelPointEventSub;
 
     public TwitchManager(TwitchRewards plugin) {
         this.plugin = plugin;
@@ -51,22 +52,26 @@ public class TwitchManager {
             List<HashMap<String, List<String>>> streamersByUsername = plugin.getStreamerList();
 
             streamers = new ArrayList<>();
-            channelPointEventSubs = new ArrayList<>();
+            List<String> streamerIDs = new ArrayList<>();
+            channelPointEventSub = null;
             for (HashMap<String, List<String>> streamerByUsername: streamersByUsername) {
                 String streamerUsername = (String) streamerByUsername.keySet().toArray()[0];
-                String streamerID = translateStreamerUsernameToID(streamerUsername);
-                List<String> redeemPlayers = streamerByUsername.get(streamerUsername);
+                Pair<String, String> streamerInfo = translateStreamerUsernameToID(streamerUsername);
+                String streamerID = streamerInfo.getLeft();
+                streamerUsername = streamerInfo.getRight(); //Case sensitive - displayname
+                List<String> redeemPlayers = streamerByUsername.get(streamerUsername.toLowerCase());
 
+                streamerIDs.add(streamerID);
+                
                 HashMap<Pair<String, String>, List<String>> streamer = new HashMap<>();
                 streamer.put(Pair.of(streamerUsername, streamerID), redeemPlayers);
                 streamers.add(streamer);
-
-                listenToRedeems(streamerID, streamerUsername);
 
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] Listening for redeems on " + ChatColor.GREEN +
                     streamerUsername + ChatColor.YELLOW  + " (" + streamerID + "), affecting player/s " + ChatColor.AQUA
                     + redeemPlayers);
             }
+            listenToRedeems(streamerIDs);
 
             if (streamers.size() > 1)
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] " +
@@ -86,13 +91,14 @@ public class TwitchManager {
         }
     }
 
-    public String translateStreamerUsernameToID(String username) {
+    //Returns ID, username. Returns username for it to be case sensitive - displayname
+    public Pair<String, String> translateStreamerUsernameToID(String username) {
         try {
             UserList resultList = twitchClient.getHelix().getUsers(oAuth.getAccessToken(),
                     null, Arrays.asList(username)).execute();
 
             for (User user: resultList.getUsers()) {
-                return user.getId();
+                return Pair.of(user.getId(), user.getDisplayName());
             }
             throw new RuntimeException("Couldn't find Streamer with username " + username + ".");
         }
@@ -100,26 +106,30 @@ public class TwitchManager {
             throw new RuntimeException("Couldn't find Streamer with username " + username + ".");
         }
     }
-    private void listenToRedeems(String streamerID, String streamerUsername) {
-        twitchClient.getChat().joinChannel(streamerUsername);
-        channelPointEventSubs.add(twitchClient.getPubSub().listenForChannelPointsRedemptionEvents(oAuth, streamerID));
+    private void listenToRedeems(List<String> streamerIDs) {
+        for (String streamerID: streamerIDs)
+            twitchClient.getPubSub().listenForChannelPointsRedemptionEvents(null, streamerID);
+        
         twitchClient.getEventManager().onEvent(RewardRedeemedEvent.class, event -> {
-            onRewardRedeemedEvent(event, streamerUsername);
+            onRewardRedeemedEvent(event);
         });
-
-
     }
 
-    private void onRewardRedeemedEvent(RewardRedeemedEvent e, String streamerUsername) {
+    private void onRewardRedeemedEvent(RewardRedeemedEvent e) {
         ChannelPointsRedemption redemption = e.getRedemption();
         //TODO: learn how the fuck this works
-        List<String> redeemPlayers = streamers.stream()
+        //Pair of streamer ID, and the redeemPlayers
+        Pair<String, List<String>> redeemData = streamers.stream()
             .map(HashMap::entrySet)
             .flatMap(Collection::stream)
-            .filter(entry -> entry.getKey().getLeft().equals(streamerUsername))
-            .map(Map.Entry::getValue)
+            .filter(entry -> entry.getKey().getRight().equals(e.getRedemption().getChannelId()))
+            .map(entry -> Pair.of(entry.getKey().getLeft(), entry.getValue()))
             .findFirst()
             .orElse(null);
+
+        String streamerUsername = redeemData.getLeft();
+        List<String> redeemPlayers = redeemData.getRight();
+
         plugin.getServer().getScheduler().runTask(plugin, () -> { //Can't run asynchronously
             plugin.getRewardManager().
                     activateChannelPointReward(streamerUsername, redeemPlayers, redemption.getUser().getDisplayName(),

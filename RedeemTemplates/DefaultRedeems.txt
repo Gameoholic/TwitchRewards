@@ -1,4 +1,5 @@
 Redeems:
+Redeems:
   - Give me a random item:
       - Reward: GiveItem
       - Item: RANDOM
@@ -36,7 +37,11 @@ Redeems:
       - Reward: DropInventory
   - God Mode:
       - Reward: GodMode
-      - GodModeDuration: 15
+      - GodModeDuration: 3
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
+  - Whitelist:
+      - Reward: AddToWhitelist
+      - WhitelistDuration: 300
+      - TeleportCooldown: 60

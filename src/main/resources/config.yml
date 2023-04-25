@@ -71,5 +71,9 @@ Redeems:
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
+  - Whitelist:
+      - Reward: AddToWhitelist
+      - WhitelistDuration: 300
+      - TeleportCooldown: 60
 
 #END OF REDEEMS

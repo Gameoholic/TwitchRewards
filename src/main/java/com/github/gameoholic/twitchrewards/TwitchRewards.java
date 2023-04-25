@@ -7,6 +7,8 @@ import com.github.gameoholic.twitchrewards.listeners.PlayerInteractListener;
 import com.github.gameoholic.twitchrewards.listeners.PlayerJoinListener;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -74,6 +76,10 @@ public final class TwitchRewards extends JavaPlugin {
                         " supported yet, you may encounter issues. Please restart the server instead of reloading it.");
             });
 
+
+        //bstats:
+        //int pluginId = 	18299;
+        //Metrics metrics = new Metrics(this, pluginId);
 
     }
 
