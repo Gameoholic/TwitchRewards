@@ -28,7 +28,7 @@ Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/164
 *And with more to come..*
 
 # Setting up
-**[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
+See **[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
 
 **Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues. It's recommended to restart the server instead.**
 
