@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class TwitchRewards extends JavaPlugin {
-
+    private static final int BSTATS_ID = 18299;
     private RewardManager rewardManager;
     private ConfigManager configManager;
     private TwitchManager twitchManager;
@@ -78,8 +78,8 @@ public final class TwitchRewards extends JavaPlugin {
 
 
         //bstats:
-        //int pluginId = 	18299;
-        //Metrics metrics = new Metrics(this, pluginId);
+        Metrics metrics = new Metrics(this, BSTATS_ID);
+
 
     }
 
