@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.logging.Level;
 
 public final class TwitchRewards extends JavaPlugin {
-
+    private static final int BSTATS_ID = 18299;
     private RewardManager rewardManager;
     private ConfigManager configManager;
     private TwitchManager twitchManager;
@@ -70,8 +70,8 @@ public final class TwitchRewards extends JavaPlugin {
 
 
         //bstats:
-        //int pluginId = 	18299;
-        //Metrics metrics = new Metrics(this, pluginId);
+        Metrics metrics = new Metrics(this, BSTATS_ID);
+
 
     }
 

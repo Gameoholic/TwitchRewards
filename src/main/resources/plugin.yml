@@ -1,5 +1,5 @@
 name: TwitchRewards
-version: '${project.version}'
+version: '$version'
 main: com.github.gameoholic.twitchrewards.TwitchRewards
 api-version: 1.19
 authors: [ Gameoholic ]
