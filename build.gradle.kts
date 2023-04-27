@@ -9,6 +9,7 @@ version = "1.6"
 repositories {
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://oss.sonatype.org/content/groups/public/")
+    mavenCentral()
 }
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
@@ -42,6 +43,7 @@ tasks {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT")
+    shade("ch.qos.logback:logback-classic:1.3.5")
     shade("com.github.twitch4j:twitch4j:1.15.0")
     shade("org.bstats:bstats-bukkit:3.0.2")
 }

@@ -42,12 +42,13 @@ public class TwitchManager {
             oAuth = new OAuth2Credential("twitch", accessToken);
 
             twitchClient = TwitchClientBuilder.builder()
-                    .withClientId(clientId)
-                    .withChatAccount(oAuth)
-                    .withEnablePubSub(true)
-                    .withEnableChat(true)
-                    .withEnableHelix(true)
-                    .build();
+                .withClientId(clientId)
+                .withChatAccount(oAuth)
+                .withEnablePubSub(true)
+                .withEnableChat(true)
+                .withEnableHelix(true)
+
+                .build();
 
             List<HashMap<String, List<String>>> streamersByUsername = plugin.getStreamerList();
 
