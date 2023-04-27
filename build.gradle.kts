@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.gameoholic"
-version = "1.5"
+version = "1.6"
 
 repositories {
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
