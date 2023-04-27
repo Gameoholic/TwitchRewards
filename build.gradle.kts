@@ -20,13 +20,46 @@ configurations.implementation {
     extendsFrom(shade)
 }
 
+val excludedDependencies = listOf(
+    "org.slf4j:slf4j-api",
+    "org.apache.commons:commons-lang3",
+    "commons-io:commons-io",
+    "commons-lang:commons-lang",
+    "commons-logging:commons-logging",
+    "commons-configuration:commons-configuration",
+    "org.jetbrains:annotations",
+)
+
+val relocations = listOf(
+    "feign",
+    "io",
+    "kotlin",
+    "okhttp3",
+    "okio",
+    "org.bstats",
+    "org.HdrHistogram",
+    "rx"
+)
+
 tasks {
     shadowJar {
         configurations = listOf(shade)
         archiveClassifier.set("")
-        isEnableRelocation = true
-        relocationPrefix = "com.github.gameoholic.twitchrewards.shade"
         minimize()
+
+        shade.dependencies.forEach { project.configurations.compileOnly.get().allDependencies }
+
+        exclude("javax", "sampleapp.properties", "dependencies.txt")
+
+        dependencies {
+            excludedDependencies.forEach { exclude(dependency(it)) }
+        }
+
+        relocations.forEach { relocate(it, "com.github.gameoholic.twitchrewards.shade.$it") }
+
+        relocate("com", "com.github.gameoholic.twitchrewards.shade.com") {
+            exclude("com/github/gameoholic/twitchrewards/**")
+        }
     }
 
     jar {
@@ -43,7 +76,7 @@ tasks {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT")
-    shade("ch.qos.logback:logback-classic:1.3.5")
+//    shade("ch.qos.logback:logback-classic:1.3.5")
     shade("com.github.twitch4j:twitch4j:1.15.0")
     shade("org.bstats:bstats-bukkit:3.0.2")
 }
