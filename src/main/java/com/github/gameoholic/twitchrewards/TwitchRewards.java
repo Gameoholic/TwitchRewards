@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 public final class TwitchRewards extends JavaPlugin {
 
@@ -60,21 +61,12 @@ public final class TwitchRewards extends JavaPlugin {
 
         Boolean usedBefore = getConfig().getBoolean("UsedBefore");
         if (!usedBefore)
-            this.getServer().getScheduler().runTask(this, () -> {
-                TextComponent message = new TextComponent(ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.GREEN + "It seems like it's" +
-                        " your first time using the plugin. Please refer to the documentation to set up the plugin: ");
-                TextComponent link = new TextComponent("https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up");
-                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up"));
-                link.setColor(net.md_5.bungee.api.ChatColor.BLUE);
-                message.addExtra(link);
-                message.addExtra(ChatColor.GREEN + " or contact Gameoholic#8987 on Discord for help.");
-                Bukkit.spigot().broadcast(message);
-            });
+            getLogger().log(Level.INFO, ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.GREEN + "It seems like it's" +
+                " your first time using the plugin. Please refer to the documentation to set up the plugin: " +
+                "https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up or contact Gameoholic#8987 on Discord for help.");
         else
-            this.getServer().getScheduler().runTask(this, () -> {
-                Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.RED + "WARNING! Reloading isn't fully" +
-                        " supported yet, you may encounter issues. Please restart the server instead of reloading it.");
-            });
+            getLogger().log(Level.INFO, ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.RED + "WARNING! Reloading isn't fully" +
+                " supported yet, you may encounter issues. Please restart the server instead.");
 
 
         //bstats:

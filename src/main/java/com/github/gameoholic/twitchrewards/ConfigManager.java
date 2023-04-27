@@ -122,6 +122,18 @@ public class ConfigManager {
                                     validateCountDataKey(rewardType);
                                     redeemData_RewardManager.put("Count", redeemDataValue);
                                     break;
+                                case "AirDropRarity":
+                                    validateAirDropRarityDataKey(rewardType);
+                                    redeemData_RewardManager.put("AirDropRarity", redeemDataValue);
+                                    break;
+                                case "TNTRunDuration":
+                                    validateTNTRunDurationDataKey(rewardType);
+                                    redeemData_RewardManager.put("TNTRunDuration", redeemDataValue);
+                                    break;
+                                case "BlockDisappearDelay":
+                                    validateBlockDisappearDelayDataKey(rewardType);
+                                    redeemData_RewardManager.put("BlockDisappearDelay", redeemDataValue);
+                                    break;
                                 default:
                                     break;
 
@@ -165,6 +177,24 @@ public class ConfigManager {
             plugin.getLogger().info("Redeem values: " + redeemValues.toString());
         }
 
+    }
+
+    private void validateBlockDisappearDelayDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.TNT_RUN) {
+            throw new RuntimeException("Invalid Block Disappear Delay argument.");
+        }
+    }
+
+    private void validateTNTRunDurationDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.TNT_RUN) {
+            throw new RuntimeException("Invalid TNT Run Duration argument.");
+        }
+    }
+
+    private void validateAirDropRarityDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.AIRDROP) {
+            throw new RuntimeException("Invalid Air Drop Rarity argument.");
+        }
     }
 
     private void validateTeleportCooldownDataKey(RewardType rewardType) {

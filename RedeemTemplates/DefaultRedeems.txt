@@ -1,5 +1,4 @@
 Redeems:
-Redeems:
   - Give me a random item:
       - Reward: GiveItem
       - Item: RANDOM
@@ -8,15 +7,21 @@ Redeems:
       - Effect: RANDOM
       - Duration: RANDOM
       - Amplifier: RANDOM
-  - Spawn a creeper:
+  - Spawn a creeper on me:
       - Reward: SpawnEntity
       - Entity: CREEPER
       - Count: 1
-  - Launch:
+  - Spawn 10 zombies on me:
+      - Reward: SpawnEntity
+      - Entity: ZOMBIE
+      - Count: 10
+  - Launch me:
       - Reward: Launch
       - Velocity: 3
   - Drop item in hand:
       - Reward: DropItem
+  - Drop everything in my inventory:
+      - Reward: DropInventory
   - Lock an inventory slot:
       - Reward: LockInventorySlot
       - Time: 30
@@ -33,15 +38,26 @@ Redeems:
       - Reward: ClutchChallenge
       - ClutchItem: RANDOM
       - Height: 100
-  - Drop everything in my inventory:
-      - Reward: DropInventory
   - God Mode:
       - Reward: GodMode
       - GodModeDuration: 3
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
-  - Whitelist:
+  - Spawn Air Drop [Common Quality]:
+      - Reward: AirDrop
+      - AirDropRarity: COMMON
+  - Spawn Air Drop [Legendary Quality]:
+      - Reward: AirDrop
+      - AirDropRarity: LEGENDARY
+  - Spawn Air Drop [Random]:
+      - Reward: AirDrop
+      - AirDropRarity: RANDOM
+  - Whitelist for 5 minutes:
       - Reward: AddToWhitelist
       - WhitelistDuration: 300
       - TeleportCooldown: 60
+  - Activate TNT Run:
+      - Reward: TNTRun
+      - BlockDisappearDelay: 0.5
+      - TNTRunDuration: 60

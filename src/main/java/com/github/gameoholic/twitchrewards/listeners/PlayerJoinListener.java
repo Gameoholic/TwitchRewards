@@ -40,8 +40,7 @@ public class PlayerJoinListener implements Listener {
                     System.out.println(onlinePlayer);
                     onlinePlayer.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 1.0f, 1.0f);
                 }
-                System.out.println("lol");
-                System.out.println(affectedPlayer);
+
                 if (affectedPlayer != null) {
                     affectedPlayer.spawnParticle(Particle.FLAME,
                             affectedPlayer.getLocation().getX(), affectedPlayer.getLocation().getY(),

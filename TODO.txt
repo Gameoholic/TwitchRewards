@@ -3,9 +3,9 @@ Better config error messages.
 Full support for reloading.
 bScript support
 also: with the basic client, pubsub is limited to 50 topic listens. if you use TwitchClientPoolBuilder (and withEnablePubSubPool(true)), this limit is lifted
-make only give normal items
 
 CHANGELOG:
-Fix multiple streamers bug
-Fix whitelist teleport
-Update default config to include whitelist
+Added Air Drop redeem
+Added TNT Run redeem
+Moved reload messages to console
+Updated default config file

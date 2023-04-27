@@ -1,6 +1,8 @@
 package com.github.gameoholic.twitchrewards.Rewards;
 
 import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.*;
+import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDrop;
+import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.Rarity;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,6 +32,7 @@ public class RewardManager {
         rnd = new Random();
     }
 
+    //TODO: Split channel point rewards into different methods
     public void activateChannelPointReward(String streamerUsername, List<String> redeemUsernames,
                                            String activatorUsername, String redeemTitle, int points, String input) {
         if (!redeems.containsKey(redeemTitle))
@@ -127,7 +130,7 @@ public class RewardManager {
                         do {
                             Material[] materials = Material.values();
                             itemMaterial = materials[rnd.nextInt(materials.length)];
-                        } while (!itemMaterial.isItem()); //Avoid blocks like AIR
+                        } while (!itemMaterial.isItem() || itemMaterial.isAir()); //Avoid items like AIR
 
                     }
                     else
@@ -215,6 +218,35 @@ public class RewardManager {
                         noPlacingDuration = (int) redeemData.get("NoPlacingDuration");
                     NoPlacing.disablePlacing(plugin, player, noPlacingDuration);
                     break;
+
+                case AIRDROP:
+                    Rarity airDropRarity;
+                    if (redeemData.get("AirDropRarity").toString().toUpperCase().equals("RANDOM")) {
+                        airDropRarity = Rarity.values()[rnd.nextInt(Rarity.values().length)];
+                    }
+                    else
+                        airDropRarity = Rarity.valueOf(redeemData.get("AirDropRarity").toString().toUpperCase());
+
+                    new AirDrop(plugin, airDropRarity, activatorUsername).spawn(player);
+                    break;
+
+                case TNT_RUN:
+                    int TNTRunDuration;
+                    if (redeemData.get("TNTRunDuration").toString().toUpperCase().equals("RANDOM")) {
+                        TNTRunDuration = rnd.nextInt(120) + 5;
+                    }
+                    else
+                        TNTRunDuration = (int) redeemData.get("TNTRunDuration");
+
+                    double blockDisappearDelay;
+                    if (redeemData.get("BlockDisappearDelay").toString().toUpperCase().equals("RANDOM")) {
+                        blockDisappearDelay = rnd.nextFloat(4) + 0.2;
+                    }
+                    else
+                        blockDisappearDelay = (double) redeemData.get("BlockDisappearDelay");
+
+                    TNTRun.activate(plugin, player, TNTRunDuration, blockDisappearDelay);
+                    break;
             }
         }
 
@@ -293,6 +325,10 @@ public class RewardManager {
                 return RewardType.NO_PLACING;
             case "AddToWhitelist":
                 return RewardType.ADD_TO_WHITELIST;
+            case "AirDrop":
+                return RewardType.AIRDROP;
+            case "TNTRun":
+                return RewardType.TNT_RUN;
             default:
                 throw new RuntimeException(String.format("Reward type %s wasn't found.", rewardType));
         }

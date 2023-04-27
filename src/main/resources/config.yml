@@ -4,9 +4,9 @@
 # +------------------------------------------------------+ #
 ############################################################
 
-#If you need help setting up the plugin, contact Gameoholic#8987 on Discord
+#If you need help setting up the plugin, contact Gameoholic#8987 on Discord.
 
-#------------ GENERAL SETTINGS ------------
+#------------------------------------ GENERAL SETTINGS ------------------------------------
 
 #-Sound that plays when a redeem is used-
 Sound: BLOCK_GLASS_BREAK #Sounds here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
@@ -17,7 +17,7 @@ Sound: BLOCK_GLASS_BREAK #Sounds here: https://hub.spigotmc.org/javadocs/bukkit/
 #Recommended value for multiple streamers: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TITLE &efor POINTS points. MESSAGE"
 RedeemMessage: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TITLE &efor POINTS points. MESSAGE"
 
-#------------ MANAGING REDEEMS ------------
+#------------------------------------ MANAGING REDEEMS ------------------------------------
 
 #Consult the full documentation on how to manage and customize your redeems:
 #https://github.com/Gameoholic/TwitchRewards/wiki/Editing-the-Config-file
@@ -29,24 +29,29 @@ RedeemMessage: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TIT
 #Don't forget to restart the server after making changes to this file!
 
 Redeems:
-  - Give me a random item: #Redeem's title, must match the one you have on Twitch
-      - Reward: GiveItem   #Reward type, this must be one of the values listed in the documentation
-      - Item: RANDOM       #For GiveItem, you can either set this to RANDOM or to one of the values listed here:
-                           #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html (for example, DIAMOND_SWORD)
+  - Give me a random item:
+      - Reward: GiveItem
+      - Item: RANDOM
   - Give me a random effect:
       - Reward: PotionEffect
       - Effect: RANDOM
       - Duration: RANDOM
       - Amplifier: RANDOM
-  - Spawn a creeper:
+  - Spawn a creeper on me:
       - Reward: SpawnEntity
       - Entity: CREEPER
       - Count: 1
-  - Launch:
+  - Spawn 10 zombies on me:
+      - Reward: SpawnEntity
+      - Entity: ZOMBIE
+      - Count: 10
+  - Launch me:
       - Reward: Launch
       - Velocity: 3
   - Drop item in hand:
       - Reward: DropItem
+  - Drop everything in my inventory:
+      - Reward: DropInventory
   - Lock an inventory slot:
       - Reward: LockInventorySlot
       - Time: 30
@@ -63,17 +68,26 @@ Redeems:
       - Reward: ClutchChallenge
       - ClutchItem: RANDOM
       - Height: 100
-  - Drop everything in my inventory:
-      - Reward: DropInventory
   - God Mode:
       - Reward: GodMode
       - GodModeDuration: 3
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
-  - Whitelist:
+  - Spawn Air Drop [Common Quality]:
+      - Reward: AirDrop
+      - AirDropRarity: COMMON
+  - Spawn Air Drop [Legendary Quality]:
+      - Reward: AirDrop
+      - AirDropRarity: LEGENDARY
+  - Spawn Air Drop [Random]:
+      - Reward: AirDrop
+      - AirDropRarity: RANDOM
+  - Whitelist for 5 minutes:
       - Reward: AddToWhitelist
       - WhitelistDuration: 300
       - TeleportCooldown: 60
-
-#END OF REDEEMS
+  - Activate TNT Run:
+      - Reward: TNTRun
+      - BlockDisappearDelay: 0.5
+      - TNTRunDuration: 60
