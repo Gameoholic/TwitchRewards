@@ -1,10 +1,8 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.HashMap;
 
 public class GiveItem {
     public static void giveItem(Player player, Material itemMaterial) {

@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Twitch;
+package com.github.gameoholic.twitchrewards.twitch;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
@@ -15,7 +15,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 import java.util.*;
-import java.util.logging.Level;
 
 public class TwitchManager {
 

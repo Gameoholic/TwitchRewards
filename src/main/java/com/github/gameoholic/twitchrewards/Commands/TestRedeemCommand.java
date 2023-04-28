@@ -1,13 +1,9 @@
-package com.github.gameoholic.twitchrewards.Commands;
+package com.github.gameoholic.twitchrewards.commands;
 
 
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDrop;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.Rarity;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.apache.commons.lang3.tuple.Pair;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

@@ -1,6 +1,6 @@
 package com.github.gameoholic.twitchrewards;
 
-import com.github.gameoholic.twitchrewards.Rewards.RewardType;
+import com.github.gameoholic.twitchrewards.rewards.RewardType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;

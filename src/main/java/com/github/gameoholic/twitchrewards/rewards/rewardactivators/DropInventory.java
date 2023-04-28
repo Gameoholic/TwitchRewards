@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

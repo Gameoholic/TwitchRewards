@@ -1,16 +1,9 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
-import com.github.gameoholic.twitchrewards.tasks.NoPlacingTask;
 import com.github.gameoholic.twitchrewards.tasks.TNTRunTask;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class TNTRun {

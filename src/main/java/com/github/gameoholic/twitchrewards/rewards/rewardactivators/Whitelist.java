@@ -1,11 +1,10 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import com.github.gameoholic.twitchrewards.tasks.WhitelistTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Optional;

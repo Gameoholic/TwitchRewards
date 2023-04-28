@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Rewards;
+package com.github.gameoholic.twitchrewards.rewards;
 
 public enum RewardType {
     SPAWN_ENTITY, POTION_EFFECT, LAUNCH, DROP_ITEM, DROP_INVENTORY,

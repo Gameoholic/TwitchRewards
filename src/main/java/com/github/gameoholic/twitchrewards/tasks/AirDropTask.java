@@ -1,16 +1,13 @@
 package com.github.gameoholic.twitchrewards.tasks;
 
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDrop;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDropEntity;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDropItems;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.Rarity;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDrop;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDropEntity;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDropItems;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Chicken;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;

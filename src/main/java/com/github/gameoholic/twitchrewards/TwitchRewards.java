@@ -1,26 +1,28 @@
 package com.github.gameoholic.twitchrewards;
 
-import com.github.gameoholic.twitchrewards.Commands.*;
-import com.github.gameoholic.twitchrewards.Rewards.RewardManager;
-import com.github.gameoholic.twitchrewards.Twitch.TwitchManager;
+import com.github.gameoholic.twitchrewards.commands.*;
+import com.github.gameoholic.twitchrewards.rewards.RewardManager;
+import com.github.gameoholic.twitchrewards.twitch.TwitchManager;
 import com.github.gameoholic.twitchrewards.listeners.PlayerInteractListener;
 import com.github.gameoholic.twitchrewards.listeners.PlayerJoinListener;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import io.github.xanthic.cache.core.CacheApiSettings;
 import org.bstats.bukkit.Metrics;
-import org.bstats.charts.SimplePie;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+import io.github.xanthic.cache.provider.guava.GuavaProvider;
 
 public final class TwitchRewards extends JavaPlugin {
+
+    static {
+        CacheApiSettings.getInstance().setDefaultCacheProvider(new GuavaProvider());
+    }
+
     private static final int BSTATS_ID = 18299;
     private RewardManager rewardManager;
     private ConfigManager configManager;

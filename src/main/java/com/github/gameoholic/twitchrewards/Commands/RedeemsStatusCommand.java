@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Commands;
+package com.github.gameoholic.twitchrewards.commands;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.ChatColor;

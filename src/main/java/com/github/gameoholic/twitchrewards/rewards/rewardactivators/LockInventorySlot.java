@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import com.github.gameoholic.twitchrewards.tasks.InventorySlotLockerTask;

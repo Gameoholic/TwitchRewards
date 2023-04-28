@@ -1,11 +1,9 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import com.github.gameoholic.twitchrewards.tasks.AirDropTask;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-
-import javax.swing.*;
 
 public class AirDrop {
 

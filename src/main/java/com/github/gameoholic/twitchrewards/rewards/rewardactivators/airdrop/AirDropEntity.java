@@ -1,11 +1,7 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.ShulkerBox;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;

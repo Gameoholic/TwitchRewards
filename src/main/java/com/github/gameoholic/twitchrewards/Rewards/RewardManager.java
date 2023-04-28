@@ -1,8 +1,8 @@
-package com.github.gameoholic.twitchrewards.Rewards;
+package com.github.gameoholic.twitchrewards.rewards;
 
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.*;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.AirDrop;
-import com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop.Rarity;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.*;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDrop;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.Rarity;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

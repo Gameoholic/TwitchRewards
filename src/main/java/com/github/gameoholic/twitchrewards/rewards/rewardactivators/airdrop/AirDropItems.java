@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Rewards.RewardsActivators.AirDrop;
+package com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop;
 
 import org.bukkit.Material;
 

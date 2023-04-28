@@ -1,4 +1,4 @@
-package com.github.gameoholic.twitchrewards.Rewards;
+package com.github.gameoholic.twitchrewards.rewards;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
