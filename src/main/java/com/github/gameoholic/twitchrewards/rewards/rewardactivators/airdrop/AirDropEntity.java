@@ -24,6 +24,7 @@ public class AirDropEntity {
         location.setDirection(new Vector(0, 0, -1));
 
         armorStand = (ArmorStand) location.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
+        armorStand.setGravity(false);
         armorStand.setInvisible(true);
 
         ItemStack item = new ItemStack(Material.CHEST, 1);
