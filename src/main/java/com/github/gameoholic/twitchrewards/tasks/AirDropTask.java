@@ -99,9 +99,9 @@ public class AirDropTask extends BukkitRunnable {
                 break;
             case LEGENDARY:
                 commonItemsAmount = rnd.nextInt(4); //0-3
-                uncommonItemsAmount = rnd.nextInt(4) + 2; //2-5
+                uncommonItemsAmount = rnd.nextInt(3) + 3; //3-5
                 rareItemsAmount = rnd.nextInt(3) + 2; //2-4
-                epicItemsAmount = rnd.nextInt(3) + 1; //1-3
+                epicItemsAmount = rnd.nextInt(2) + 2; //2-3
                 legendaryItemsAmount = rnd.nextInt(2) + 2; //2-3
                 chestName = ChatColor.GOLD + "Legendary Air Drop";
                 break;

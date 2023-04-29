@@ -5,8 +5,6 @@ import com.github.gameoholic.twitchrewards.rewards.RewardManager;
 import com.github.gameoholic.twitchrewards.twitch.TwitchManager;
 import com.github.gameoholic.twitchrewards.listeners.PlayerInteractListener;
 import com.github.gameoholic.twitchrewards.listeners.PlayerJoinListener;
-import io.github.xanthic.cache.core.CacheApiSettings;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,15 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
-import io.github.xanthic.cache.provider.guava.GuavaProvider;
 
 public final class TwitchRewards extends JavaPlugin {
 
-    static {
-        CacheApiSettings.getInstance().setDefaultCacheProvider(new GuavaProvider());
-    }
-
-    private static final int BSTATS_ID = 18299;
     private RewardManager rewardManager;
     private ConfigManager configManager;
     private TwitchManager twitchManager;
@@ -71,8 +63,6 @@ public final class TwitchRewards extends JavaPlugin {
                 " supported yet, you may encounter issues. Please restart the server instead.");
 
 
-        //bstats:
-        Metrics metrics = new Metrics(this, BSTATS_ID);
 
 
     }

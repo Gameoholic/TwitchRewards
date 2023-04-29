@@ -1,10 +1,11 @@
 Allow customizable random values, for example: "1-5".
 Better config error messages.
 Full support for reloading.
-bScript support
+Move to gradle + bScript support
 
 CHANGELOG:
 Added Air Drop redeem
 Added TNT Run redeem
 Moved reload messages to console
 Updated default config file
+Package renaming
