@@ -14,7 +14,7 @@ Plugin showcase video: https://youtu.be/quovjhnDzT0
 
 Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/1646272304022802439
 
-Used by Streamer porgiexd: https://twitter.com/porgiexd
+Used by Streamers porgiexd, tidusMAX, metasixtyfour
 
 
 **Features**
