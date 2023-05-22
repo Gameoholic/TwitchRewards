@@ -18,7 +18,7 @@ Plugin showcase video: https://youtu.be/quovjhnDzT0
 ---
 + Easy to set up
     - Link your Twitch channel in less than a minute!
-+ 16 configurable reward types
++ 17 configurable reward types
 + Multiple streamer support
     - Have everybody's chats' redeems affect every player! (only if you want to, it's very chaotic!)
 + Affect multiple players at the same time
