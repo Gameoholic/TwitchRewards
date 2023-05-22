@@ -134,6 +134,10 @@ public class ConfigManager {
                                     validateBlockDisappearDelayDataKey(rewardType);
                                     redeemData_RewardManager.put("BlockDisappearDelay", redeemDataValue);
                                     break;
+                                case "TNTRunRadius":
+                                    validateTNTRunRadiusDataKey(rewardType);
+                                    redeemData_RewardManager.put("TNTRunRadius", redeemDataValue);
+                                    break;
                                 default:
                                     break;
 
@@ -179,6 +183,11 @@ public class ConfigManager {
 
     }
 
+    private void validateTNTRunRadiusDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.TNT_RUN) {
+            throw new RuntimeException("Invalid TNT Run Radius argument.");
+        }
+    }
     private void validateBlockDisappearDelayDataKey(RewardType rewardType) {
         if (rewardType != RewardType.TNT_RUN) {
             throw new RuntimeException("Invalid Block Disappear Delay argument.");

@@ -1,6 +1,7 @@
 package com.github.gameoholic.twitchrewards.tasks;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
+import com.github.gameoholic.twitchrewards.other.ActionBarManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -26,11 +27,11 @@ public class GodModeTask extends BukkitRunnable {
     @Override
     public void run() {
         timeLeft--;
-        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(
+        ActionBarManager.displayMessage(player, new TextComponent(
                 ChatColor.YELLOW + "" + String.format("God mode active for " + timeLeft + " seconds")));
         if (timeLeft <= 0) {
             player.setInvulnerable(false);
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(
+            ActionBarManager.displayMessage(player, new TextComponent(
                     ChatColor.YELLOW + "" + String.format("God mode deactivated")));
             cancel();
             godModeTasks.remove(this);

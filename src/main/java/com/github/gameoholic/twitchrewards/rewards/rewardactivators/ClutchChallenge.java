@@ -11,7 +11,7 @@ public class ClutchChallenge {
         Location newLoc = location;
         for (int i = 1; i <= height + 2; i++) {
             newLoc.setY(location.getY() + 1);
-            if (newLoc.getBlock().getType() != Material.AIR) {
+            if (newLoc.getBlock().getType().isSolid()) {
                 break;
             }
         }

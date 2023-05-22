@@ -63,17 +63,17 @@ public class RewardManager {
                     int count;
 
                     if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM")) {
-                        count = rnd.nextInt(6) + 1;
-                    }
-                    else
-                        count = (int) redeemData.get("Count");
-
-                    if ((redeemData.get("Count").toString().toUpperCase().equals("RANDOM"))) {
                         int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
                         entityType = RandomTypes.randomEntityTypes[randomIndex];
                     }
                     else
                         entityType = EntityType.valueOf(((String) redeemData.get("Entity")).toUpperCase());
+
+                    if ((redeemData.get("Count").toString().toUpperCase().equals("RANDOM"))) {
+                        count = rnd.nextInt(6) + 1;
+                    }
+                    else
+                        count = (int) redeemData.get("Count");
 
                     for (int i = 0; i < count; i++)
                         SpawnEntity.spawnEntity(player, entityType);
@@ -118,6 +118,10 @@ public class RewardManager {
 
                 case DROP_ITEM:
                     DropItem.dropItem(player);
+                    break;
+
+                case REMOVE_ITEM:
+                    RemoveItem.removeItem(player);
                     break;
 
                 case DROP_INVENTORY:
@@ -238,6 +242,13 @@ public class RewardManager {
                     else
                         TNTRunDuration = (int) redeemData.get("TNTRunDuration");
 
+                    int TNTRunRadius;
+                    if (redeemData.get("TNTRunRadius").toString().toUpperCase().equals("RANDOM")) {
+                        TNTRunRadius = rnd.nextInt(6) + 1;
+                    }
+                    else
+                        TNTRunRadius = (int) redeemData.get("TNTRunRadius");
+
                     double blockDisappearDelay;
                     if (redeemData.get("BlockDisappearDelay").toString().toUpperCase().equals("RANDOM")) {
                         blockDisappearDelay = rnd.nextFloat(4) + 0.2;
@@ -245,7 +256,7 @@ public class RewardManager {
                     else
                         blockDisappearDelay = (double) redeemData.get("BlockDisappearDelay");
 
-                    TNTRun.activate(plugin, player, TNTRunDuration, blockDisappearDelay);
+                    TNTRun.activate(plugin, player, TNTRunDuration, blockDisappearDelay, TNTRunRadius);
                     break;
             }
         }
@@ -305,6 +316,8 @@ public class RewardManager {
                 return RewardType.LAUNCH;
             case "DropItem":
                 return RewardType.DROP_ITEM;
+            case "RemoveItem":
+                return RewardType.REMOVE_ITEM;
             case "DropInventory":
                 return RewardType.DROP_INVENTORY;
             case "GiveItem":

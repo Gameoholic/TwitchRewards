@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class TNTRun {
 
-    public static void activate(TwitchRewards plugin, Player player, int TNTRunDuration, double blockDisappearDelay) {
+    public static void activate(TwitchRewards plugin, Player player, int TNTRunDuration, double blockDisappearDelay, int TNTRunRadius) {
 
         //No duplicate tasks. If new, just change existing one's time
         Optional<TNTRunTask> task = TNTRunTask.TNTRunTasks.stream()
@@ -16,10 +16,11 @@ public class TNTRun {
             .findFirst();
 
         if (task.isPresent()) {
+            task.get().setRadius(TNTRunRadius);
             task.get().setTimeLeft(TNTRunDuration);
             task.get().setBlockDisappearDelay((blockDisappearDelay));
         }
         else
-            new TNTRunTask(plugin, player, TNTRunDuration, blockDisappearDelay);
+            new TNTRunTask(plugin, player, TNTRunDuration, blockDisappearDelay, TNTRunRadius);
     }
 }

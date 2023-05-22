@@ -4,8 +4,10 @@ Full support for reloading.
 Move to gradle + bScript support
 
 CHANGELOG:
-Added Air Drop redeem
-Added TNT Run redeem
-Moved reload messages to console
+Added radius argument to TNT Run redeem
+Added Remove Item redeem
 Updated default config file
-Package renaming
+Fixed Clutch Challenge not teleporting if you're in water
+Removed HARM and HEAL from the random potion effect selection
+Fixed bug where spawning a random entity wouldn't work
+Made it easier to escape a TNT Run sinkhole

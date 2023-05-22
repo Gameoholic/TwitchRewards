@@ -41,15 +41,17 @@ Redeems:
       - Reward: SpawnEntity
       - Entity: CREEPER
       - Count: 1
-  - Spawn 10 zombies on me:
+  - Spawn a random mob on me:
       - Reward: SpawnEntity
-      - Entity: ZOMBIE
-      - Count: 10
+      - Entity: RANDOM
+      - Count: 1
   - Launch me:
       - Reward: Launch
       - Velocity: 3
   - Drop item in hand:
       - Reward: DropItem
+  - Remove my item:
+      - Reward: RemoveItem
   - Drop everything in my inventory:
       - Reward: DropInventory
   - Lock an inventory slot:
@@ -74,9 +76,6 @@ Redeems:
   - Flight:
       - Reward: Flight
       - FlightDuration: 10
-  - Spawn Air Drop [Common Quality]:
-      - Reward: AirDrop
-      - AirDropRarity: COMMON
   - Spawn Air Drop [Legendary Quality]:
       - Reward: AirDrop
       - AirDropRarity: LEGENDARY
@@ -91,3 +90,9 @@ Redeems:
       - Reward: TNTRun
       - BlockDisappearDelay: 0.5
       - TNTRunDuration: 60
+      - TNTRunRadius: 1
+  - Activate Mega TNT Run:
+      - Reward: TNTRun
+      - BlockDisappearDelay: 0.5
+      - TNTRunDuration: 30
+      - TNTRunRadius: 2

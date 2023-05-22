@@ -19,13 +19,15 @@ public class TNTRunTask extends BukkitRunnable {
     private int timeLeft;
     private Player player;
     private int blockDisappearDelay;
+    private int TNTRunRadius;
 
     //TODO: fix when redeem ends block will still disappear
-    public TNTRunTask(TwitchRewards plugin, Player player, int time, double blockDisappearDelay) {
+    public TNTRunTask(TwitchRewards plugin, Player player, int time, double blockDisappearDelay, int TNTRunRadius) {
         timeLeft = (time + 1) * 20;
         this.plugin = plugin;
         this.player = player;
         this.blockDisappearDelay = (int) (blockDisappearDelay * 20);
+        this.TNTRunRadius = TNTRunRadius;
         runTaskTimer(plugin, 0L, 1L);
         TNTRunTasks.add(this);
     }
@@ -47,7 +49,7 @@ public class TNTRunTask extends BukkitRunnable {
                 .filter(t -> t.getBlock().getLocation().equals(underPlayerLoc))
                 .findFirst();
             if (!task.isPresent())
-                new RemoveBlockTask(plugin, blockDisappearDelay, underPlayerLoc.getBlock());
+                new RemoveBlockTask(plugin, blockDisappearDelay, underPlayerLoc.getBlock(), TNTRunRadius);
         }
 
         if (timeLeft <= 0) {
@@ -70,5 +72,9 @@ public class TNTRunTask extends BukkitRunnable {
     }
     public void setBlockDisappearDelay(double blockDisappearDelay) {
         this.blockDisappearDelay = (int) (blockDisappearDelay * 20);
+    }
+
+    public void setRadius(int TNTRunRadius) {
+        this.TNTRunRadius = TNTRunRadius;
     }
 }
