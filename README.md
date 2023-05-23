@@ -4,9 +4,7 @@
 ---
 A 1.19 Spigot plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
-Used by Streamer mightybrothers1: https://twitter.com/mightybrothers2/status/1646272304022802439
-
-Used by Streamers porgiexd, tidusMAX, metasixtyfour
+Used by Streamers [mightybrothers1](https://twitter.com/mightybrothers2/status/1646272304022802439), [porgiexd](https://twitter.com/porgiexd), [tidusMAX](https://twitter.com/TidusIThink), [metasixtyfour](https://twitter.com/metasixtyfour), [av3rry](https://twitter.com/Av33ry_)
 
 https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-b05f-fbeb5cb4b7ae.mp4
 
@@ -20,7 +18,7 @@ Plugin showcase video: https://youtu.be/quovjhnDzT0
 ---
 + Easy to set up
     - Link your Twitch channel in less than a minute!
-+ 16 configurable reward types
++ 17 configurable reward types
 + Multiple streamer support
     - Have everybody's chats' redeems affect every player! (only if you want to, it's very chaotic!)
 + Affect multiple players at the same time
