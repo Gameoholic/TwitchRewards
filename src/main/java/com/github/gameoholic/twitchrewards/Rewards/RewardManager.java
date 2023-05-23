@@ -278,7 +278,7 @@ public class RewardManager {
                 else
                     teleportCooldown = (int) redeemData.get("TeleportCooldown");
 
-                Whitelist.addToWhitelist(plugin, input.substring(0, Math.min(input.length(), 15)),
+                Whitelist.addToWhitelist(plugin, input.substring(0, Math.min(input.length(), 16)),
                     redeemUsernames, whitelistDuration, teleportCooldown);
                 break;
         }

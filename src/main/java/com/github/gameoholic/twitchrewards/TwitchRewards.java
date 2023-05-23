@@ -1,6 +1,8 @@
 package com.github.gameoholic.twitchrewards;
 
 import com.github.gameoholic.twitchrewards.commands.*;
+import com.github.gameoholic.twitchrewards.listeners.BlockBreakListener;
+import com.github.gameoholic.twitchrewards.listeners.BlockPlaceListener;
 import com.github.gameoholic.twitchrewards.rewards.RewardManager;
 import com.github.gameoholic.twitchrewards.twitch.TwitchManager;
 import com.github.gameoholic.twitchrewards.listeners.PlayerInteractListener;
@@ -36,6 +38,9 @@ public final class TwitchRewards extends JavaPlugin {
         //Event listeners:
         getServer().getPluginManager().registerEvents(new PlayerInteractListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockPlaceListener(), this);
+        getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+
 
         //Commands:
         getCommand("testredeem").setExecutor(new TestRedeemCommand(this));
@@ -47,7 +52,6 @@ public final class TwitchRewards extends JavaPlugin {
         getCommand("startredeems").setExecutor(new StartRedeemsCommand(this));
         getCommand("pauseredeems").setExecutor(new PauseRedeemsCommand(this));
         getCommand("redeemsstatus").setExecutor(new RedeemsStatusCommand(this));
-
 
         configManager.loadConfig();
 

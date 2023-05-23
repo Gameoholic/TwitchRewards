@@ -1,9 +1,7 @@
 package com.github.gameoholic.twitchrewards.listeners;
 
-import com.github.gameoholic.twitchrewards.tasks.NoBreakingTask;
-import com.github.gameoholic.twitchrewards.tasks.NoCraftingTask;
-import com.github.gameoholic.twitchrewards.tasks.NoPlacingTask;
-import com.github.gameoholic.twitchrewards.tasks.WhitelistTask;
+import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDrop;
+import com.github.gameoholic.twitchrewards.tasks.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,7 +23,6 @@ public class PlayerInteractListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         whitelistCompassUseCheck(e);
 
-        //TODO: Split these into methods as well.
 
         //No crafting:
         if (e.getClickedBlock() != null && e.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
@@ -36,21 +33,15 @@ public class PlayerInteractListener implements Listener {
                 e.setCancelled(true);
         }
 
-        if (e.getAction() == Action.LEFT_CLICK_BLOCK) {
-            Optional<NoBreakingTask> task = NoBreakingTask.noBreakingTasks.stream()
-                    .filter(t -> t.getPlayer() != null && t.getPlayer().getUniqueId().equals(e.getPlayer().getUniqueId()))
-                    .findFirst();
+        //Opening air drop chest:
+        if (e.getClickedBlock() != null && e.getClickedBlock().getType() == Material.CHEST) {
+            Optional<AirDropTask> task = AirDropTask.airDropTasks.stream()
+                .filter(t -> t.getChest() != null && t.getChest().getLocation().equals(e.getClickedBlock().getLocation()))
+                .findFirst();
             if (task.isPresent())
-                e.setCancelled(true);
+                task.get().setParticleDisappearDelay(1);
         }
 
-        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Optional<NoPlacingTask> task = NoPlacingTask.noPlacingTasks.stream()
-                    .filter(t -> t.getPlayer() != null && t.getPlayer().getUniqueId().equals(e.getPlayer().getUniqueId()))
-                    .findFirst();
-            if (task.isPresent())
-                e.setCancelled(true);
-        }
     }
 
     private void whitelistCompassUseCheck(PlayerInteractEvent e) {

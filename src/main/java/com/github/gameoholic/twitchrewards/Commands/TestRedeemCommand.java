@@ -3,11 +3,18 @@ package com.github.gameoholic.twitchrewards.commands;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.apache.commons.lang3.tuple.Pair;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Shulker;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 import java.util.*;
 
@@ -27,7 +34,6 @@ public class TestRedeemCommand implements CommandExecutor {
                 return true;
             }
         }
-
 
 
         if (args.length < 2) {

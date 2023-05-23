@@ -29,41 +29,41 @@ RedeemMessage: "&aSTREAMER_USERNAME: &eACTIVATOR_USERNAME activated &bREDEEM_TIT
 #Don't forget to restart the server after making changes to this file!
 
 Redeems:
-  - Give me a random item:
+  - Give Me a Random Item:
       - Reward: GiveItem
       - Item: RANDOM
-  - Give me a random effect:
+  - Give Me a Random Effect:
       - Reward: PotionEffect
       - Effect: RANDOM
       - Duration: RANDOM
       - Amplifier: RANDOM
-  - Spawn a creeper on me:
+  - Spawn a Creeper On Me:
       - Reward: SpawnEntity
       - Entity: CREEPER
       - Count: 1
-  - Spawn a random mob on me:
+  - Spawn Random Mobs On Me:
       - Reward: SpawnEntity
       - Entity: RANDOM
-      - Count: 1
-  - Launch me:
+      - Count: 3
+  - Launch Me:
       - Reward: Launch
       - Velocity: 3
-  - Drop item in hand:
+  - Drop Item In Hand:
       - Reward: DropItem
-  - Remove my item:
+  - Remove My Item:
       - Reward: RemoveItem
-  - Drop everything in my inventory:
+  - Drop Everything In My Inventory:
       - Reward: DropInventory
-  - Lock an inventory slot:
+  - Lock an Inventory Slot:
       - Reward: LockInventorySlot
       - Time: 30
   - No Placing blocks:
       - Reward: NoPlacing
       - NoPlacingDuration: 30
-  - No breaking blocks:
+  - No Breaking Blocks:
       - Reward: NoBreaking
       - NoBreakingDuration: 30
-  - No crafting:
+  - No Crafting:
       - Reward: NoCrafting
       - NoCraftingDuration: RANDOM
   - Make Me Clutch:
@@ -82,7 +82,7 @@ Redeems:
   - Spawn Air Drop [Random]:
       - Reward: AirDrop
       - AirDropRarity: RANDOM
-  - Whitelist for 5 minutes:
+  - Whitelist For 5 Minutes:
       - Reward: AddToWhitelist
       - WhitelistDuration: 300
       - TeleportCooldown: 60

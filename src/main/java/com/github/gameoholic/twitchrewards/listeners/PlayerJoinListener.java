@@ -1,10 +1,7 @@
 package com.github.gameoholic.twitchrewards.listeners;
 
 import com.github.gameoholic.twitchrewards.tasks.WhitelistTask;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,10 +32,8 @@ public class PlayerJoinListener implements Listener {
 
             if (!whitelistTask.hasJoined()) {
                 whitelistTask.setJoined(true);
-                System.out.println(Bukkit.getOnlinePlayers());
                 for (Player onlinePlayer: Bukkit.getOnlinePlayers()) {
-                    System.out.println(onlinePlayer);
-                    onlinePlayer.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 1.0f, 1.0f);
+                    onlinePlayer.playSound(player.getLocation(), Sound.BLOCK_PORTAL_TRAVEL, 0.5f, 1.0f);
                 }
 
                 if (affectedPlayer != null) {
@@ -58,6 +53,7 @@ public class PlayerJoinListener implements Listener {
                 meta.setDisplayName("Teleport to Streamer");
                 item.setItemMeta(meta);
                 player.getInventory().addItem(item);
+                player.sendMessage(ChatColor.YELLOW + "You can use your compass to teleport to the streamer.");
             }
         }
 

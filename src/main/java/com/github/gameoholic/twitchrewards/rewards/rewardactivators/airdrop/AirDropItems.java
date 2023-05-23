@@ -226,6 +226,8 @@ public class AirDropItems {
         put(Material.DIAMOND, 9);
         put(Material.OBSIDIAN, 15);
         put(Material.ENDER_PEARL, 16);
+        put(Material.ENDER_PEARL, 16);
+        put(Material.BLAZE_POWDER, 2);
         put(Material.GOLDEN_APPLE, 6);
         put(Material.TRIDENT, 1);
         put(Material.END_CRYSTAL, 10);
@@ -246,6 +248,12 @@ public class AirDropItems {
         put(Material.NETHERITE_LEGGINGS, 1);
         put(Material.DIAMOND, 30);
         put(Material.DIAMOND, 25);
+        put(Material.ENDER_PEARL, 16);
+        put(Material.ENDER_PEARL, 16);
+        put(Material.BLAZE_POWDER, 4);
+        put(Material.BLAZE_POWDER, 4);
+        put(Material.ENDER_EYE, 3);
+        put(Material.ENDER_EYE, 3);
         put(Material.NETHERITE_SCRAP, 20);
         put(Material.NETHERITE_INGOT, 4);
         put(Material.ELYTRA, 4);

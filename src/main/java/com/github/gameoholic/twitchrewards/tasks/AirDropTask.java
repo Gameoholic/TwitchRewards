@@ -7,10 +7,13 @@ import com.github.gameoholic.twitchrewards.TwitchRewards;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
-import org.bukkit.entity.Chicken;
-import org.bukkit.entity.Zombie;
+import org.bukkit.block.ShulkerBox;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import java.util.*;
 
@@ -19,6 +22,8 @@ public class AirDropTask extends BukkitRunnable {
     private AirDrop airDrop;
     private int particleAnimationFrame = 0;
     private int totalParticleAnimationFrames = 50;
+    private int particleDisappearDelay = 2501;
+    private Block chest = null;
     public AirDropTask(TwitchRewards plugin,  AirDrop airDrop) {
         this.airDrop = airDrop;
         airDropTasks.add(this);
@@ -28,6 +33,18 @@ public class AirDropTask extends BukkitRunnable {
 
     @Override
     public void run() {
+        if (particleDisappearDelay <= 2500) {
+            if (particleAnimationFrame == totalParticleAnimationFrames)
+                particleAnimationFrame = 0;
+            spawnParticle();
+            particleAnimationFrame++;
+            if (particleDisappearDelay <= 0 || chest.getType() != Material.CHEST) {
+                airDropTasks.remove(this);
+                cancel();
+            }
+            particleDisappearDelay--;
+            return;
+        }
         AirDropEntity airDropEntity = airDrop.getAirDropEntity();
 
         Location newLocation = airDropEntity.getArmorStand().getLocation();
@@ -55,17 +72,16 @@ public class AirDropTask extends BukkitRunnable {
             for (Zombie zombie: airDropEntity.getZombies()) {
                 zombie.remove();
             }
-            airDropTasks.remove(this);
-            cancel();
+            particleDisappearDelay--;
         }
 
     }
 
     private void setChest(Block block) {
+        chest = block;
         block.setType(Material.CHEST);
         Chest chest = (Chest) block.getState();
         Random rnd = new Random();
-
 
         String chestName = "";
         int commonItemsAmount = 0;
@@ -106,9 +122,9 @@ public class AirDropTask extends BukkitRunnable {
                 chestName = ChatColor.GOLD + "Legendary Air Drop";
                 break;
         }
+
         //Generate random items:
         List<ItemStack> chestItems = new ArrayList<>();
-        int itemsAmount = rnd.nextInt(4) + 3; //3-6 items
 
         for (int i = 0; i < commonItemsAmount; i++)
             chestItems.add(generateItemStackFromSelection(AirDropItems.commonItems, rnd));
@@ -175,12 +191,22 @@ public class AirDropTask extends BukkitRunnable {
         double circleZ1 = (radius / 2) * Math.sin(angle1);
 
 
-        airDrop.getAirDropEntity().getArmorStand().getLocation().getWorld().spawnParticle(
+        Location location = airDrop.getAirDropEntity().getArmorStand().getLocation();
+        org.bukkit.util.Vector particleVert = new org.bukkit.util.Vector(0, 0, 0);
+        if (particleDisappearDelay <= 2500) {
+            location = chest.getLocation();
+            particleVert.setX(0.5);
+            particleVert.setY(-1.2);
+            particleVert.setZ(0.5);
+        }
+
+
+        location.getWorld().spawnParticle(
             Particle.REDSTONE,
-            new Location(airDrop.getAirDropEntity().getArmorStand().getLocation().getWorld(),
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getX() + circleX1, //X
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getY() + 1.6, //Y
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getZ() + circleZ1), //Z
+            new Location(location.getWorld(),
+                location.getX() + circleX1 + particleVert.getX(), //X
+                location.getY() + 1.6 + particleVert.getY(), //Y
+                location.getZ() + circleZ1 + particleVert.getZ()), //Z
             10,
             dustOptions
         );
@@ -191,17 +217,24 @@ public class AirDropTask extends BukkitRunnable {
         double circleX2 = (radius / 2) * Math.cos(angle2);
         double circleZ2 = (radius / 2) * Math.sin(angle2);
 
-        airDrop.getAirDropEntity().getArmorStand().getLocation().getWorld().spawnParticle(
+        location.getWorld().spawnParticle(
             Particle.REDSTONE,
-            new Location(airDrop.getAirDropEntity().getArmorStand().getLocation().getWorld(),
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getX() + circleX2, //X
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getY() + 1.6, //Y
-                airDrop.getAirDropEntity().getArmorStand().getLocation().getZ() + circleZ2), //Z
+            new Location(location.getWorld(),
+                location.getX() + circleX2 + particleVert.getX(), //X
+                location.getY() + 1.6 + particleVert.getY(), //Y
+                location.getZ() + circleZ2 + particleVert.getZ()), //Z
             10,
             dustOptions
         );
 
 
+    }
+
+    public Block getChest() {
+        return chest;
+    }
+    public void setParticleDisappearDelay(int particleDisappearDelay) {
+        this.particleDisappearDelay = particleDisappearDelay;
     }
 
 

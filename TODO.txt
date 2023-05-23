@@ -4,10 +4,8 @@ Full support for reloading.
 Move to gradle + bScript support
 
 CHANGELOG:
-Added radius argument to TNT Run redeem
-Added Remove Item redeem
-Updated default config file
-Fixed Clutch Challenge not teleporting if you're in water
-Removed HARM and HEAL from the random potion effect selection
-Fixed bug where spawning a random entity wouldn't work
-Made it easier to escape a TNT Run sinkhole
+Added particles for unopened air drops
+Adjusted air drops loot to add blaze powder
+Fixed whitelist redeem not working for usernames with 16 characters
+Made whitelist join sound quieter
+Adjusted default config
