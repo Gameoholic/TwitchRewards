@@ -4,9 +4,11 @@ import com.github.gameoholic.twitchrewards.rewards.rewardactivators.*;
 import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.AirDrop;
 import com.github.gameoholic.twitchrewards.rewards.rewardactivators.airdrop.Rarity;
 import com.github.gameoholic.twitchrewards.TwitchRewards;
+import com.github.gameoholic.twitchrewards.tasks.InvincibilityTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -65,6 +67,14 @@ public class RewardManager {
                     if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM")) {
                         int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
                         entityType = RandomTypes.randomEntityTypes[randomIndex];
+                    }
+                    else if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM_GOOD")) {
+                        int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
+                        entityType = RandomTypes.goodEntityTypes[randomIndex];
+                    }
+                    else if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM_BAD")) {
+                        int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
+                        entityType = RandomTypes.badEntityTypes[randomIndex];
                     }
                     else
                         entityType = EntityType.valueOf(((String) redeemData.get("Entity")).toUpperCase());
@@ -157,8 +167,12 @@ public class RewardManager {
                 case CLUTCH_CHALLENGE:
                     Material clutchItemMaterial;
                     if (((String)redeemData.get("ClutchItem")).toUpperCase().equals("RANDOM")) {
-                        int randomIndex = rnd.nextInt(RandomTypes.randomClutchItems.length);
-                        clutchItemMaterial = RandomTypes.randomClutchItems[randomIndex];
+                        do {
+                            int randomIndex = rnd.nextInt(RandomTypes.randomClutchItems.length);
+                            clutchItemMaterial = RandomTypes.randomClutchItems[randomIndex];
+                        }
+                        while (clutchItemMaterial == Material.WATER_BUCKET && (player.getWorld().getEnvironment() == World.Environment.NETHER));
+
                     }
                     else
                         clutchItemMaterial = Material.getMaterial((String) redeemData.get("ClutchItem"));
@@ -181,6 +195,16 @@ public class RewardManager {
                     else
                         godModeDuration = (int) redeemData.get("GodModeDuration");
                     GodMode.enableGodMode(plugin, player, godModeDuration);
+                    break;
+
+                case INVINCIBILITY:
+                    int invincibilityDuration;
+                    if (redeemData.get("InvincibilityDuration").toString().toUpperCase().equals("RANDOM")) {
+                        invincibilityDuration = rnd.nextInt(66) + 5;
+                    }
+                    else
+                        invincibilityDuration = (int) redeemData.get("InvincibilityDuration");
+                    Invincibility.enableInvincibility(plugin, player, invincibilityDuration);
                     break;
 
                 case FLIGHT:
@@ -318,6 +342,8 @@ public class RewardManager {
                 return RewardType.DROP_ITEM;
             case "RemoveItem":
                 return RewardType.REMOVE_ITEM;
+            case "Invincibility":
+                return RewardType.INVINCIBILITY;
             case "DropInventory":
                 return RewardType.DROP_INVENTORY;
             case "GiveItem":

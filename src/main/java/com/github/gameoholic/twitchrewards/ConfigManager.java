@@ -98,6 +98,10 @@ public class ConfigManager {
                                     validateGodModeDurationDataKey(rewardType);
                                     redeemData_RewardManager.put("GodModeDuration", redeemDataValue);
                                     break;
+                                case "InvincibilityDuration":
+                                    validateInvincibilityDurationDataKey(rewardType);
+                                    redeemData_RewardManager.put("InvincibilityDuration", redeemDataValue);
+                                    break;
                                 case "NoCraftingDuration":
                                     validateNoCraftingDurationDataKey(rewardType);
                                     redeemData_RewardManager.put("NoCraftingDuration", redeemDataValue);
@@ -181,6 +185,12 @@ public class ConfigManager {
             plugin.getLogger().info("Redeem values: " + redeemValues.toString());
         }
 
+    }
+
+    private void validateInvincibilityDurationDataKey(RewardType rewardType) {
+        if (rewardType != RewardType.INVINCIBILITY) {
+            throw new RuntimeException("Invalid Invincibility Duration argument.");
+        }
     }
 
     private void validateTNTRunRadiusDataKey(RewardType rewardType) {

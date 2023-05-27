@@ -72,7 +72,10 @@ Redeems:
       - Height: 100
   - God Mode:
       - Reward: GodMode
-      - GodModeDuration: 3
+      - GodModeDuration: 10
+  - Invincibility:
+      - Reward: Invincibility
+      - InvincibilityDuration: 10
   - Flight:
       - Reward: Flight
       - FlightDuration: 10

@@ -2,7 +2,6 @@ package com.github.gameoholic.twitchrewards.tasks;
 
 import com.github.gameoholic.twitchrewards.TwitchRewards;
 import com.github.gameoholic.twitchrewards.other.ActionBarManager;
-import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -11,16 +10,17 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GodModeTask extends BukkitRunnable {
-    public static List<GodModeTask> godModeTasks = new ArrayList<>();
+public class InvincibilityTask extends BukkitRunnable {
+
+    public static List<InvincibilityTask> invincibilityTasks = new ArrayList<>();
 
     private int timeLeft;
     private Player player;
-    public GodModeTask(TwitchRewards plugin, Player player, int time) {
+    public InvincibilityTask(TwitchRewards plugin, Player player, int time) {
         timeLeft = time + 1;
         this.player = player;
         runTaskTimer(plugin, 0L, 20L);
-        godModeTasks.add(this);
+        invincibilityTasks.add(this);
     }
 
 
@@ -28,14 +28,14 @@ public class GodModeTask extends BukkitRunnable {
     public void run() {
         timeLeft--;
         ActionBarManager.displayMessage(player, new TextComponent(
-                ChatColor.YELLOW + "" + String.format("God mode active for " + timeLeft + " seconds")));
+            ChatColor.YELLOW + "" + String.format("Invincibility active for " + timeLeft + " seconds")));
         if (timeLeft <= 0) {
             player.setInvulnerable(false);
             player.setAllowFlight(false);
             ActionBarManager.displayMessage(player, new TextComponent(
-                    ChatColor.YELLOW + "" + String.format("God mode deactivated")));
+                ChatColor.YELLOW + "" + String.format("Invincibility deactivated")));
             cancel();
-            godModeTasks.remove(this);
+            invincibilityTasks.remove(this);
         }
 
     }
@@ -49,4 +49,5 @@ public class GodModeTask extends BukkitRunnable {
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
     }
+
 }

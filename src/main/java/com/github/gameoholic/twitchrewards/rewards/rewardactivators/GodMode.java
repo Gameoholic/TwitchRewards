@@ -9,6 +9,8 @@ import java.util.Optional;
 public class GodMode {
     public static void enableGodMode(TwitchRewards plugin, Player player, int time) {
         player.setInvulnerable(true);
+        player.setAllowFlight(true);
+
 
         //No duplicate tasks. If new, just change existing one's time
         Optional<GodModeTask> task = GodModeTask.godModeTasks.stream()
