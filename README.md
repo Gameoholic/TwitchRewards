@@ -26,10 +26,10 @@ Plugin showcase video: https://youtu.be/quovjhnDzT0
 
 *And with more to come..*
 
-# Setting up 🔧
+**Setting up** 🔧
 See **[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)**
 
 **Important: Please avoid using `/reload` after running `/startredeems`, it's not fully supported and may lead to issues. It's recommended to restart the server instead.**
 
-# Support 🎧
+**Support** 🎧
 If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.
