@@ -4,7 +4,4 @@ Full support for reloading.
 Move to gradle + bScript support
 
 CHANGELOG:
-Made clutch challenge not give water buckets if in the nether
-Made god mode redeem give you both flight AND invincibility
-Added invincibility redeem
-Added RANDOM_GOOD and RANDOM_BAD as a mob type to Spawn Mob Redeem
+Fixed RANDOM_GOOD and RANDOM_BAD entity type

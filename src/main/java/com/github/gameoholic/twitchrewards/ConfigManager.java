@@ -168,6 +168,7 @@ public class ConfigManager {
         }
         catch (Exception e) {
             Bukkit.getLogger().log(Level.SEVERE, String.format("Error loading config file! %s", e.getMessage()));
+            e.printStackTrace();
 
             plugin.getServer().getScheduler().runTask(plugin, () -> {
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "[TwitchRewards] " + ChatColor.RED +
@@ -307,7 +308,7 @@ public class ConfigManager {
             throw new RuntimeException(String.format("Required reward type for Entity is SpawnEntity. Provided is %s.", rewardType));
         }
         //Ensure entity type is valid:
-        if (!entityType.toUpperCase().equals("RANDOM"))
+        if (!entityType.toUpperCase().equals("RANDOM") && !entityType.toUpperCase().equals("RANDOM_GOOD") && !entityType.toUpperCase().equals("RANDOM_BAD"))
             EntityType.valueOf(entityType.toUpperCase());
     }
 

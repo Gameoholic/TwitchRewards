@@ -69,11 +69,11 @@ public class RewardManager {
                         entityType = RandomTypes.randomEntityTypes[randomIndex];
                     }
                     else if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM_GOOD")) {
-                        int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
+                        int randomIndex = rnd.nextInt(RandomTypes.goodEntityTypes.length);
                         entityType = RandomTypes.goodEntityTypes[randomIndex];
                     }
                     else if (((String)redeemData.get("Entity")).toUpperCase().equals("RANDOM_BAD")) {
-                        int randomIndex = rnd.nextInt(RandomTypes.randomEntityTypes.length);
+                        int randomIndex = rnd.nextInt(RandomTypes.badEntityTypes.length);
                         entityType = RandomTypes.badEntityTypes[randomIndex];
                     }
                     else
