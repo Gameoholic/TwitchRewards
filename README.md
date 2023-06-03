@@ -4,7 +4,7 @@
 ---
 A 1.19 Spigot plugin designed for streamers who want to engage their audience. Allows you to create custom channel redeems that affect you in-game. It's easy and configurable.
 
-Used by Streamers [mightybrothers1](https://twitter.com/mightybrothers2/status/1646272304022802439), [porgiexd](https://twitter.com/porgiexd), [tidusMAX](https://twitter.com/TidusIThink), [metasixtyfour](https://twitter.com/metasixtyfour), [av3rry](https://twitter.com/Av33ry_)
+Used by Streamers [Piggles](https://twitter.com/ItzIgglePiggles/status/1660684585447964672), [mightybrothers1](https://twitter.com/mightybrothers2/status/1646272304022802439), [porgiexd](https://twitter.com/porgiexd), [natcrackers] (https://twitter.com/natcrackers/status/1662529880633020416), [tidusMAX](https://twitter.com/TidusIThink), [metasixtyfour](https://twitter.com/metasixtyfour), [av3rry](https://twitter.com/Av33ry_)
 
 https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-b05f-fbeb5cb4b7ae.mp4
 
