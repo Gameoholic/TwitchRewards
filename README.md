@@ -35,4 +35,4 @@ See **[Setting Up](https://github.com/Gameoholic/TwitchRewards/wiki/Setting-Up)*
 
 **Support** 🎧
 ---
-If you require support or need help setting up the plugin, feel free to message me on Discord: Gameoholic#8987. If you found an issue or have a suggestion open an Issue thread or message me.
+If you require support or need help setting up the plugin, feel free to message me on Discord: @gameoholic. If you found an issue or have a suggestion open an Issue thread or message me.
