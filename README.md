@@ -12,7 +12,8 @@ https://user-images.githubusercontent.com/30177004/233594164-09e02cef-6573-424e-
 
 **Showcase** 📺
 ---
-Plugin showcase video: https://youtu.be/quovjhnDzT0
+Trailer video: [https://www.youtube.com/watch?v=mBUme-V4Vls](https://www.youtube.com/watch?v=mBUme-V4Vls)
+Old trailer: [https://www.youtube.com/watch?v=quovjhnDzT0](https://www.youtube.com/watch?v=quovjhnDzT0)
 
 **Features** 📝
 ---
